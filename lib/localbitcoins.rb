@@ -14,16 +14,16 @@ module LocalBitcoins
 
   # Define a global configuration
   #
-  # options[:api_key]     - client key
-  # options[:api_secret]  - client secret
+  # options[:client_id]
+  # options[:client_secret]
   #
   def self.configure(options={})
     unless options.kind_of?(Hash)
       raise ArgumentError, "Options hash required."
     end
     
-    @@options[:api_key]    = options[:api_key]
-    @@options[:api_secret] = options[:api_secret]
+    @@options[:client_id]     = options[:client_id]
+    @@options[:client_secret] = options[:client_secret]
     @@options
   end
   

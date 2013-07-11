@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec',     '~> 2.13'
   s.add_development_dependency 'webmock',   '~> 1.11'
   
+  s.add_runtime_dependency 'json',          '~> 2.13'
   s.add_runtime_dependency 'rest-client',   '~> 1.6'
   s.add_runtime_dependency 'hashie',        '~> 2.0.2'
   s.add_runtime_dependency 'activesupport', '~> 3'

@@ -55,7 +55,7 @@ There are several ways to solve the problem of keeping your credentials secret. 
 
 ## Usage
 
-You can get a list of your (or the token owner's) releaseable escrows through the OAuth client. You can also use the client to release an escrow.
+You can get a list of the token owner's releaseable escrows through the OAuth client. You can also use the client to release an escrow.
 
 ### View Releaseable Escrows
 

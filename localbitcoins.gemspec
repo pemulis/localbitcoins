@@ -9,11 +9,12 @@ Gem::Specification.new do |s|
   s.authors     = ["John Shutt"]
   s.email       = ["john.d.shutt@gmail.com"]
   s.homepage    = "http://shutt.in"
+  s.license     = "MIT"
   
   s.add_development_dependency 'rspec',     '~> 2.13'
   s.add_development_dependency 'webmock',   '~> 1.11'
   
-  s.add_runtime_dependency 'json',          '~> 2.13'
+  s.add_runtime_dependency 'json',          '~> 1.8.0'
   s.add_runtime_dependency 'rest-client',   '~> 1.6'
   s.add_runtime_dependency 'hashie',        '~> 2.0.2'
   s.add_runtime_dependency 'activesupport', '~> 3'

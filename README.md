@@ -1,6 +1,8 @@
-# LocalBitcoins API Client
+# LocalBitcoins API Client 0.0.2
 
-This gem provides a simple, extensible Ruby client to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/).
+This gem provides a simple, extensible Ruby client to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/). Please note that this a work in progress, and does not yet have a test suite. 
+
+DO NOT USE THIS IN PRODUCTION APPLICATIONS UNTIL THE TEST SUITE HAS BEEN WRITTEN! THANKS!
 
 ## Installation
 

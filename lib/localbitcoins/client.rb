@@ -8,13 +8,12 @@ module LocalBitcoins
     include LocalBitcoins::Escrows
     include LocalBitcoins::Ads
 
-    attr_reader :oauth_token
+    attr_reader :oauth_client, :access_token
 
     # Initialize a LocalBitcoins::Client instance
     #
-    # All API calls to LocalBitcoins require an OAuth token, so you 
-    # need to include one when you initialize the client.
-    #
+    # options[:client_id]
+    # options[:client_secret]
     # options[:oauth_token]
     #
     def initialize(options={})
@@ -22,7 +21,18 @@ module LocalBitcoins
         raise ArgumentError, "Options hash required."
       end
 
-      @oauth_token = options[:oauth_token]
+      @oauth_client = OAuth2::Client.new(
+        options[:client_id],
+        options[:client_secret],
+        authorize_url: "/oauth2/authorize",
+        token_url: "/oauth2/access_token",
+        site: "https://www.localbitcoins.com"
+      )
+
+      @access_token = OAuth2::AccessToken.new(
+        oauth_client,
+        options[:oauth_token]
+      ) 
     end
   end
 end

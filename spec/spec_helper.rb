@@ -11,9 +11,10 @@ end
 
 def stub_get(path, fixture_name)
   stub_request(:get, api_url(path)).
-    with(headers: {
-      'Accept'=>'application/json'
-    }).
+    with(
+      headers: {
+        'Accept'=>'application/json'
+      }).
     to_return(
       status:  200, 
       body:    fixture(fixture_name), 
@@ -46,5 +47,5 @@ def fixture(file)
 end
 
 def api_url(path)
-  "https://www.localbitcoins.com#{path}"
+  "#{LocalBitcoins::Request::API_URL}#{path}"
 end

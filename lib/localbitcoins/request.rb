@@ -2,9 +2,11 @@ require 'rest-client'
 require 'active_support/core_ext'
 require 'json'
 require 'hashie'
+require 'oauth2'
 
 module LocalBitcoins
   module Request
+    API_URL = "https://www.localbitcoins.com"
 
     protected
 

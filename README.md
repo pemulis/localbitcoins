@@ -24,9 +24,17 @@ Once you have your token, you can set up your client with the following code:
 
 ``` ruby
 # long version
-client = LocalBitcoins::Client.new(oauth_token: 'OAUTH_TOKEN')
-# short version
-client = LocalBitcoins.new(oauth_token: 'OAUTH_TOKEN')
+client = LocalBitcoins::Client.new(
+  client_id:     'CLIENT_ID',
+  client_secret: 'CLIENT_SECRET',
+  oauth_token:   'OAUTH_TOKEN'
+)
+# slightly shorter version
+client = LocalBitcoins.new(
+  client_id:     'CLIENT_ID',
+  client_secret: 'CLIENT_SECRET',
+  oauth_token:   'OAUTH_TOKEN'
+)
 ```
 
 ### Global Configuration
@@ -36,12 +44,12 @@ To make things easier, you can define your client credentials at a global level:
 ``` ruby
 # Set the configuration
 LocalBitcoins.configure(
-  client_id: 'ID',
-  client_secret: 'SECRET'
+  client_id: 'CLIENT_ID',
+  client_secret: 'CLIENT_SECRET'
 )
 
 # Get the configuration
-LocalBitcoins.configuration # => { client_id => 'ID', client_secret => 'SECRET' }
+LocalBitcoins.configuration # => { client_id => 'CLIENT_ID', client_secret => 'CLIENT_SECRET' }
 
 # Reset the configuration
 LocalBitcoins.reset_configuration

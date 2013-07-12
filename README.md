@@ -2,8 +2,6 @@
 
 This gem provides a simple, extensible Ruby wrapper to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/).
 
-THIS IS A WORK IN PROGRESS AND DOES NOT YET HAVE A TEST SUITE. DO NOT USE THIS IN PRODUCTION APPLICATIONS UNTIL THE TEST SUITE HAS BEEN WRITTEN. THANKS!
-
 ## Installation
 
 Install the gem:
@@ -64,7 +62,7 @@ You can get a list of the token owner's releaseable escrows through the OAuth cl
 ``` ruby
 escrows = client.escrows
 
-escrows.each do |e|
+escrows.escrow_list.each do |e|
   e.data.created_at     # => UTC datetime escrow was created at
   e.data.buyer_username # => username of the buyer
   e.data.reference_code # => reference code for the escrow
@@ -89,7 +87,7 @@ You can get a list of the token owner's ads with the following method:
 ``` ruby
 ads = client.ads
 
-ads.each do |a|
+ads.ad_list.each do |a|
   a.data.visible    # => boolean value of the ad's visibility
   a.data.email      # => valid e-mail string or null
   a.data.location_string # => human-readable location

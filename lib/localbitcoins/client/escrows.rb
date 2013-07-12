@@ -4,7 +4,7 @@ module LocalBitcoins
     #
     def escrows()
       data = oauth_request(:get, '/api/escrows')
-      Hashie::Mash.new(data['escrow_list'])
+      Hashie::Mash.new(data)
     end
 
     # Release an escrow

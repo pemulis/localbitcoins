@@ -4,6 +4,7 @@ require 'localbitcoins/client/ads'
 
 module LocalBitcoins
   class Client
+    include LocalBitcoins::Request
     include LocalBitcoins::Escrows
     include LocalBitcoins::Ads
 

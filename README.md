@@ -1,4 +1,4 @@
-# LocalBitcoins API Gem 0.0.3
+# LocalBitcoins API Gem 0.0.4
 
 This gem provides a simple, extensible Ruby wrapper to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/).
 

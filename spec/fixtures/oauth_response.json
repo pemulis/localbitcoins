@@ -1,0 +1,6 @@
+{
+  "access_token": "ABC123UANDME",
+  "scope": "read",
+  "expires_in": "69",
+  "refresh_token": "REFRESH"
+}

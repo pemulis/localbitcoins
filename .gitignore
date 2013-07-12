@@ -20,3 +20,6 @@ doc/
 # Vim temp files
 *~
 *.swp
+
+# Gems
+*.gem

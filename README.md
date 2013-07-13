@@ -14,11 +14,11 @@ Or include it in your Gemfile:
 gem 'openlibrary'
 ```
 
-## Setting Up Your OAuth Client 
+## Setting Up Your OAuth2 Client 
 
-First, you need to [register your application](https://localbitcoins.com/accounts/api/) with LocalBitcoins to get your API keys. You will get a Client ID and a Client Secret, which you will use to get your OAuth access token. An OAuth access token is required for all requests to the LocalBitcoins API. 
+First, you need to [register your application](https://localbitcoins.com/accounts/api/) with LocalBitcoins to get your API keys. You will get a Client ID and a Client Secret, which you will use to get your OAuth2 access token. An OAuth2 access token is required for all requests to the LocalBitcoins API. 
 
-There are a number of ways to implement OAuth, and it is largely left up to you to decide how to do it. If you've never used OAuth before, reading [this tutorial](http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified) is a good place to start!
+There are a number of ways to implement OAuth2, and it is largely left up to you to decide how to do it. If you've never used OAuth2 before, reading [this tutorial](http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified) is a good place to start!
 
 Once you have your token, you can set up your client with the following code:
 

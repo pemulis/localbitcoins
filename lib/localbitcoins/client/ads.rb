@@ -17,8 +17,19 @@ module LocalBitcoins
     #
     # NOTE: Omitting min_amount or max_amount will unset them.
     #
-    def update_ad(id, visibility, min_amount, max_amount, price_equation)
-      # Can't use this method until the Ads API is complete!
+    def ad_edit(ad_id, update_hash)
+      old_hash = oauth_request(:get, "/api/ad-get/#{ad_id}")
+      for update_hash.each do |key|
+          old_hash[key] = update_hash[key]
+      end
+      #result = URI.encode(old_hash.map{|k,v|"#{k}=#{v}"}.join("&"))
+      oauth_request(:post, "/api/ad-get/#{ad_id}/", result)
     end
+
+    def ad_create(hash)
+      #result = URI.encode(hash.map{|k,v|"#{k}=#{v}"}.join("&"))
+      oauth_request(:post, '/api/ad-create/', result)
+    end
+
   end
 end

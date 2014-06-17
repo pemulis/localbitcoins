@@ -3,6 +3,8 @@ require 'localbitcoins/client/escrows'
 require 'localbitcoins/client/ads'
 require 'localbitcoins/client/users'
 require 'localbitcoins/client/contacts'
+require 'localbitcoins/client/markets'
+require 'localbitcoins/client/wallet'
 
 module LocalBitcoins
   class Client
@@ -11,6 +13,10 @@ module LocalBitcoins
     include LocalBitcoins::Ads
     include LocalBitcoins::Users
     include LocalBitcoins::Contacts
+    include LocalBitcoins::Markets
+    include LocalBitcoins::Wallet
+    include LocalBitcoins::Contacts
+
 
     attr_reader :oauth_client, :access_token
 

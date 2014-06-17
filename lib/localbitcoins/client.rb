@@ -1,12 +1,14 @@
 require 'localbitcoins/client'
 require 'localbitcoins/client/escrows'
 require 'localbitcoins/client/ads'
+require 'localbitcoins/client/users'
 
 module LocalBitcoins
   class Client
     include LocalBitcoins::Request
     include LocalBitcoins::Escrows
     include LocalBitcoins::Ads
+    include LocalBitcoins::Users
 
     attr_reader :oauth_client, :access_token
 
@@ -26,7 +28,7 @@ module LocalBitcoins
         options[:client_secret],
         authorize_url: "/oauth2/authorize",
         token_url: "/oauth2/access_token",
-        site: "https://www.localbitcoins.com"
+        site: "https://localbitcoins.com"
       )
 
       @access_token = OAuth2::AccessToken.new(

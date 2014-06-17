@@ -36,5 +36,25 @@ module LocalBitcoins
     def contact_info(contacts)
       oauth_request(:get, '/api/contact_info/', {:contacts=>contacts})
     end
+
+    def open_active_contacts(contact_type = nil)
+      contact_type<<'/' if !contact_type.nil? rescue nil
+      oauth_request(:get, "/api/dashboard/#{contact_type}")
+    end
+
+    def released_contacts(contact_type = nil)
+      contact_type<<'/' if !contact_type.nil? rescue nil
+      oauth_request(:get, "/api/dashboard/released/#{contact_type}")
+    end
+
+    def canceled_contacts(contact_type = nil)
+      contact_type<<'/' if !contact_type.nil? rescue nil
+      oauth_request(:get, "/api/dashboard/canceled/#{contact_type}")
+    end
+
+    def closed_contacts(contact_type = nil)
+      contact_type<<'/' if !contact_type.nil? rescue nil
+      oauth_request(:get, "/api/dashboard/closed/#{contact_type}")
+    end
   end
 end

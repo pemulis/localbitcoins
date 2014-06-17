@@ -30,6 +30,5 @@ module LocalBitcoins
       #result = URI.encode(hash.map{|k,v|"#{k}=#{v}"}.join("&"))
       oauth_request(:post, '/api/ad-create/', hash)
     end
-
   end
 end

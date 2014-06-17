@@ -2,7 +2,7 @@ module LocalBitcoins
   module Escrows
     # Get a list of the token owner's releaseable escrows 
     #
-    def escrows()
+    def escrows
       data = oauth_request(:get, '/api/escrows/')
       Hashie::Mash.new(data)
     end

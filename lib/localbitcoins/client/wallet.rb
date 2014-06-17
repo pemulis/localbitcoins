@@ -21,6 +21,5 @@ module LocalBitcoins
     def wallet_addr()
       oauth_request(:post, '/api/wallet-addr/')
     end
-
   end
 end

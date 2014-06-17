@@ -10,7 +10,7 @@ module LocalBitcoins
       Hashie::Mash.new(data['data'])
     end
 
-    def logout()
+    def logout
       oauth_request(:post, '/api/logout/')
     end
   end

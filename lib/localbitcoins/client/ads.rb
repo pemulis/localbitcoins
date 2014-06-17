@@ -30,7 +30,7 @@ module LocalBitcoins
 
     def create_ad(params)
       oauth_request(:post, '/api/ad-create/', params)
-    end
 
+    end
   end
 end

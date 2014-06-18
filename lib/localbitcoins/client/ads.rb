@@ -17,19 +17,20 @@ module LocalBitcoins
     #
     # NOTE: Omitting min_amount or max_amount will unset them.
     #
-    def ad_edit(ad_id, update_hash)
-      old_hash = oauth_request(:get, "/api/ad-get/#{ad_id}")
-      for update_hash.each do |key|
-          old_hash[key] = update_hash[key]
-      end
-      #result = URI.encode(old_hash.map{|k,v|"#{k}=#{v}"}.join("&"))
-      oauth_request(:post, "/api/ad-get/#{ad_id}/", result)
+    def update_ad(id, params)
+      old_ad = oauth_request(:get, "/api/ad-get/#{id}/")
+      old_ad = Hashie::Mash.new(old_ad['data']['ad_list'][0]['data'])
+      updated_params = {
+          :min_amount => old_ad.min_amount,
+          :max_amount => old_ad.max_amount,
+          :visible    => true
+      }.merge(params)
+      oauth_request(:post, "/api/ad/#{id}/", updated_params)['data']['message']
     end
 
-    def ad_create(hash)
-      #result = URI.encode(hash.map{|k,v|"#{k}=#{v}"}.join("&"))
-      oauth_request(:post, '/api/ad-create/', result)
-    end
+    def create_ad(params)
+      oauth_request(:post, '/api/ad-create/', params)
 
+    end
   end
 end

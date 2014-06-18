@@ -17,11 +17,10 @@ module LocalBitcoins
     # path   - Request path
     # params - Parameters hash
     #
-    def oauth_request(http_method, path, params={})
+    def oauth_request(http_method, path, body={})
       raise 'OAuth access token required!' unless @access_token
-      params.merge!({:Accept =>'application/json',:access_token => @access_token.token})
-      resp = @access_token.request(http_method, path, :params => params)
-
+      params = { :Accept =>'application/json', :access_token => @access_token.token }
+      resp = @access_token.request(http_method, path, :params => params, :body => body)
       case resp
         when Net::HTTPUnauthorized
           raise LocalBitcoins::Unauthorized

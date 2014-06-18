@@ -7,27 +7,32 @@ module LocalBitcoins
     end
 
     def wallet_balance
-      wallet.except(:received_transactions_30d, :receiving_address_count, :sent_transactions_30d)
+      data = wallet.except(:received_transactions_30d, :receiving_address_count, :sent_transactions_30d)
+      Hashie::Mash.new(data)
     end
 
     def wallet_send(address, amount)
-      oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount})
+      data = oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount})
+      Hashie::Mash.new(data)
     end
 
     def wallet_send_pin(address, amount, pin)
       if valid_pin(pin)
-        oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount, :pin=>pin})
+        data = oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount, :pin=>pin})
+        Hashie::Mash.new(data)
       else
         false
       end
     end
 
     def valid_pin(pin)
-      oauth_request(:post, '/api/pincode/', {:pincode=>pin})['data']['pincode_ok']
+      data = oauth_request(:post, '/api/pincode/', {:pincode=>pin})['data']['pincode_ok']
+      Hashie::Mash.new(data)
     end
 
     def wallet_addr
-      oauth_request(:post, '/api/wallet-addr/')
+      data = oauth_request(:post, '/api/wallet-addr/')
+      Hashie::Mash.new(data)
     end
   end
 end

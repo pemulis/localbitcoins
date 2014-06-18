@@ -35,8 +35,7 @@ module LocalBitcoins
 
     def contact_create(ad_id, amount, message=nil)
       data = oauth_request(:post, "/api/contact_create/#{ad_id}/", {:amount=>amount, :message=>message})
-      Hashie::Mash.new(data['actions.contact_url'])
-      #MERGE OR NO? .merge(data['data.funded']
+      Hashie::Mash.new(data)
     end
 
     def contact_info(contacts)

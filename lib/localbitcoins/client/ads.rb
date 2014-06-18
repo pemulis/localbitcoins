@@ -25,7 +25,7 @@ module LocalBitcoins
           :max_amount => old_ad.max_amount,
           :visible    => true
       }.merge(params)
-      oauth_request(:post, "/api/ad/#{id}/", updated_params)
+      oauth_request(:post, "/api/ad/#{id}/", updated_params)['data']['message']
     end
 
     def create_ad(params)

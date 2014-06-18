@@ -1,71 +1,66 @@
-require 'open-uri'
-
 module LocalBitcoins
   module Contacts
+    # Contact interaction endpoints
+    # contact_id - id number associated with the contact
 
-    def contact_mark_as_paid(contact_id)
-      data = oauth_request(:post, "/api/contact_mark_as_paid/#{contact_id}/")
-      Hashie::Mash.new(data)
+    def mark_contact_as_paid(contact_id)
+      oauth_request(:post, "/api/contact_mark_as_paid/#{contact_id}/")
     end
 
-    def contact_message_post(contact_id, msg)
-      data = oauth_request(:post, "/api/contact_message_post/#{contact_id}/", {:msg=>msg})
-      Hashie::Mash.new(data)
+    def messages_from_contact(contact_id)
+      oauth_request(:get, "/api/contact_messages/#{contact_id}/")
     end
 
-    def contact_messages(contact_id)
-      data = oauth_request(:get, "/api/contact_messages/#{contact_id}/")
-      Hashie::Mash.new(data)
+    def message_contact(contact_id, msg)
+      oauth_request(:post, "/api/contact_message_post/#{contact_id}/", {:msg=>msg})
     end
 
-    def contact_dispute(contact_id)
-      data = oauth_request(:post, "/api/contact_dispute/#{contact_id}/")
-      Hashie::Mash.new(data)
+    def dispute_contact(contact_id)
+      oauth_request(:post, "/api/contact_dispute/#{contact_id}/")
     end
 
-    def contact_cancel(contact_id)
-      data = oauth_request(:post, "/api/contact_cancel/#{contact_id}/")
-      Hashie::Mash.new(data)
+    def cancel_contact(contact_id)
+      oauth_request(:post, "/api/contact_cancel/#{contact_id}/")
     end
 
-    def contact_fund(contact_id)
-      data = oauth_request(:post, "/api/contact_fund/#{contact_id}/")
-      Hashie::Mash.new(data)
+    def fund_contact(contact_id)
+      oauth_request(:post, "/api/contact_fund/#{contact_id}/")
     end
 
-    def contact_create(ad_id, amount, message=nil)
-      data = oauth_request(:post, "/api/contact_create/#{ad_id}/", {:amount=>amount, :message=>message})
-      Hashie::Mash.new(data['actions.contact_url'])
-      #MERGE OR NO? .merge(data['data.funded']
+    def create_contact(ad_id, amount, message=nil)
+      oauth_request(:post, "/api/contact_create/#{ad_id}/", {:amount=>amount, :message=>message})
     end
 
-    def contact_info(contacts)
-      data = oauth_request(:get, '/api/contact_info/', {:contacts=>contacts})
-      Hashie::Mash.new(data)
+    def contact_info(contact_id)
+      oauth_request(:get, "/api/contact_info/#{contact_id}/")
     end
 
-    def open_active_contacts(contact_type = nil)
+    # contacts - comma separated list of contact ids [string]
+    def contacts_info(contacts)
+      oauth_request(:get, '/api/contact_info/', {:contacts=>contacts})
+    end
+
+    # Dashboard contact endpoints
+    # contact_type - optional filter 'buyer' or 'seller' [string]
+
+    def active_contacts(contact_type = nil)
       contact_type<<'/' if !contact_type.nil? rescue nil
-      data = oauth_request(:get, "/api/dashboard/#{contact_type}")
-      Hashie::Mash.new(data)
+      oauth_request(:get, "/api/dashboard/#{contact_type}")
     end
 
     def released_contacts(contact_type = nil)
       contact_type<<'/' if !contact_type.nil? rescue nil
-      data = oauth_request(:get, "/api/dashboard/released/#{contact_type}")
-      Hashie::Mash.new(data)
+      oauth_request(:get, "/api/dashboard/released/#{contact_type}")
     end
 
     def canceled_contacts(contact_type = nil)
       contact_type<<'/' if !contact_type.nil? rescue nil
-      data = oauth_request(:get, "/api/dashboard/canceled/#{contact_type}")
-      Hashie::Mash.new(data)
+      oauth_request(:get, "/api/dashboard/canceled/#{contact_type}")
     end
 
     def closed_contacts(contact_type = nil)
       contact_type<<'/' if !contact_type.nil? rescue nil
-      data = oauth_request(:get, "/api/dashboard/closed/#{contact_type}")
-      Hashie::Mash.new(data)
+      oauth_request(:get, "/api/dashboard/closed/#{contact_type}")
     end
   end
 end

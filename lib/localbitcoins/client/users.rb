@@ -1,15 +1,13 @@
 module LocalBitcoins
   module Users
     def myself
-      data = oauth_request(:get, '/api/myself/')
-      Hashie::Mash.new(data['data'])
+      oauth_request(:get, '/api/myself/')
     end
 
     def account_info(username)
-      data = oauth_request(:get, "/api/account_info/#{username}/")
-      Hashie::Mash.new(data['data'])
+      oauth_request(:get, "/api/account_info/#{username}/")
     end
-
+    # immediately expires the currently authorized access_token
     def logout
       oauth_request(:post, '/api/logout/')
     end

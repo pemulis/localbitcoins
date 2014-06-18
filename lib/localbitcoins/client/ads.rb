@@ -4,7 +4,7 @@ module LocalBitcoins
     #
     def ads
       data = oauth_request(:get, '/api/ads/')
-      Hashie::Mash.new(data['ad_list'])
+      Hashie::Mash.new(data['data']).ad_list
     end
 
     # Update one of the token owner's ads
@@ -30,7 +30,14 @@ module LocalBitcoins
 
     def create_ad(params)
       oauth_request(:post, '/api/ad-create/', params)
+    end
 
+    def ad_list(ads)
+      oauth_request(:get, "/api/ad-get/", {:ads=>ads})
+    end
+
+    def single_ad(ad_id)
+      oauth_request(:get, "/api/ad-get/#{ad_id}/")
     end
   end
 end

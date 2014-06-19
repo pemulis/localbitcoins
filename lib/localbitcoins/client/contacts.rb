@@ -8,7 +8,7 @@ module LocalBitcoins
     end
 
     def messages_from_contact(contact_id)
-      oauth_request(:get, "/api/contact_messages/#{contact_id}/")
+      oauth_request(:get, "/api/contact_messages/#{contact_id}/").data
     end
 
     def message_contact(contact_id, msg)
@@ -37,29 +37,29 @@ module LocalBitcoins
 
     # contacts - comma separated list of contact ids [string]
     def contacts_info(contacts)
-      oauth_request(:get, '/api/contact_info/', {:contacts=>contacts})
+      oauth_request(:get, '/api/contact_info/', {:contacts=>contacts}).data
     end
 
     # Dashboard contact endpoints
     # contact_type - optional filter 'buyer' or 'seller' [string]
     #
     def active_contacts(contact_type = nil)
-      contact_type<<'/' if !contact_type.nil? rescue nil
+      contact_type<<'/' unless contact_type.nil?
       oauth_request(:get, "/api/dashboard/#{contact_type}").data
     end
 
     def released_contacts(contact_type = nil)
-      contact_type<<'/' if !contact_type.nil? rescue nil
+      contact_type<<'/' unless contact_type.nil?
       oauth_request(:get, "/api/dashboard/released/#{contact_type}").data
     end
 
     def canceled_contacts(contact_type = nil)
-      contact_type<<'/' if !contact_type.nil? rescue nil
+      contact_type<<'/' unless contact_type.nil?
       oauth_request(:get, "/api/dashboard/canceled/#{contact_type}").data
     end
 
     def closed_contacts(contact_type = nil)
-      contact_type<<'/' if !contact_type.nil? rescue nil
+      contact_type<<'/' unless contact_type.nil?
       oauth_request(:get, "/api/dashboard/closed/#{contact_type}").data
     end
   end

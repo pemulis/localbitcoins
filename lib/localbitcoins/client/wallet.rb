@@ -13,7 +13,7 @@ module LocalBitcoins
       oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount}).data
     end
 
-    def wallet_send_with_pin(address, amount, pin)
+    def wallet_pin_send(address, amount, pin)
       oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount, :pin=>pin}).data if valid_pin?(pin)
     end
 

@@ -20,6 +20,7 @@ module LocalBitcoins
     def oauth_request(http_method, path, body={})
       raise 'OAuth access token required!' unless @access_token
       params = { :Accept =>'application/json', :access_token => @access_token.token }
+      params.merge!(body) if http_method == :get
       resp = @access_token.request(http_method, path, :params => params, :body => body)
       hash = Hashie::Mash.new(JSON.parse(resp.body))
       raise Error.new(hash.error) if hash.error

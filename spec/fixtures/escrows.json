@@ -1,24 +1,26 @@
-{ "escrow_list": 
-  [
-    {
-      "data": {
-        "created_at": "2013-06-20T15:23:01.61",
-        "buyer_username": "alice",
-        "reference_code": "123"
+{
+  "data": {
+    "escrow_list": [
+      {
+        "data": {
+          "created_at": "2013-06-20T15:23:01.61",
+          "buyer_username": "alice",
+          "reference_code": "123"
+        },
+        "actions": {
+          "release_url": "/api/escrow_release/1/"
+        }
       },
-      "actions": {
-        "release_url": "/api/escrow_release/1/"
+      {
+        "data": {
+          "created_at": "2013-06-21T16:20:13.04",
+          "buyer_username": "bob",
+          "reference_code": "456"
+        },
+        "actions": {
+          "release_url": "/api/escrow_release/2/"
+        }
       }
-    },
-    {
-      "data": {
-        "created_at": "2013-06-21T16:20:13.04",
-        "buyer_username": "bob",
-        "reference_code": "456"
-      },
-      "actions": {
-        "release_url": "/api/escrow_release/2/"
-      }
-    }
-  ]
+    ]
+  }
 }

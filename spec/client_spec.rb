@@ -34,4 +34,16 @@ describe 'Client' do
     end
   end
 
+  describe "#ads" do
+    before do
+      stub_get('/api/ads/', 'ads.json')
+    end
+
+    it 'returns listing of token owners ads' do
+      expect { client.ads }.not_to raise_error
+      ads = client.ads
+      ads.should be_a Hashie::Mash
+      ads.ad_count.should eq 2
+    end
+  end
 end

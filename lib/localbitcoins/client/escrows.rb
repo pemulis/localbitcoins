@@ -7,7 +7,9 @@ module LocalBitcoins
     end
 
     # Release an escrow
-    #
+    # id - the contact number
+    # NOTE: LocalBitcoins documentation calls this the "escrow_id",
+    # it is actually just the contact number the escrow is associated with
     def escrow_release(id)
       oauth_request(:post, "/api/escrow_release/#{id}/")
     end

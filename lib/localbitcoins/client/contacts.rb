@@ -42,7 +42,7 @@ module LocalBitcoins
 
     # Dashboard contact endpoints
     # contact_type - optional filter 'buyer' or 'seller' [string]
-
+    #
     def active_contacts(contact_type = nil)
       contact_type<<'/' if !contact_type.nil? rescue nil
       oauth_request(:get, "/api/dashboard/#{contact_type}")

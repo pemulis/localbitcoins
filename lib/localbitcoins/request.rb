@@ -6,7 +6,7 @@ require 'oauth2'
 
 module LocalBitcoins
   module Request
-    API_URL = "https://www.localbitcoins.com"
+    API_URL = "https://localbitcoins.com"
 
     protected
 

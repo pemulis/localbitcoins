@@ -14,7 +14,7 @@ module LocalBitcoins
     end
 
     def wallet_send_with_pin(address, amount, pin)
-      if valid_pin?(pin); oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount, :pin=>pin})
+      oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount, :pin=>pin}) if valid_pin?(pin)
     end
 
     def valid_pin?(pin)

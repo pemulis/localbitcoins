@@ -30,13 +30,13 @@ module LocalBitcoins
     #
     # - Required fields -
     # min_amount                - minimum amount for sale in fiat [string]
-    # max_amount                - maximum amounr for sale in fiat [string]
+    # max_amount                - maximum amount for sale in fiat [string]
     # price_equation            - price using price equation operators [string]
     # lat                       - latitude of location [float]
     # lon                       - longitude of location [float]
     # city                      - city of listing [string]
     # location_string           - text representation of location [string]
-    # countrycode               - two letter countrycod [string]
+    # countrycode               - two letter countrycode [string]
     # account_info              - [string]
     # bank_name                 - [string]
     # sms_verification_required - only receive contacts with verified phone numbers [boolean]

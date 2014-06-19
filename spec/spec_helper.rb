@@ -11,9 +11,9 @@ RSpec.configure do |config|
   config.color_enabled = true
 end
 
-def stub_get(path, fixture_name)
+def stub_get(path, fixture_name, params={})
   stub_request(:get, api_url(path)).
-         with(:query => {"Accept" => "application/json", "access_token" => "ACCESS_TOKEN"},
+         with(:query => {"Accept" => "application/json", "access_token" => "ACCESS_TOKEN"}.merge!(params),
               :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
                            'Authorization'=>'Bearer ACCESS_TOKEN','Content-Type'=>'application/x-www-form-urlencoded',
                            'User-Agent'=>'Faraday v0.9.0'}).to_return(:status => 200, :body => fixture(fixture_name),

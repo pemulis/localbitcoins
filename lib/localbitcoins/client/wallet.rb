@@ -2,27 +2,27 @@ module LocalBitcoins
   module Wallet
     # Gets information about the token owner's wallet balance
     def wallet
-      oauth_request(:get, '/api/wallet/')
+      oauth_request(:get, '/api/wallet/').data
     end
 
     def wallet_balance
-      wallet.except(:received_transactions_30d, :receiving_address_count, :sent_transactions_30d)
+      oauth_request(:get, '/api/wallet-balance/').data
     end
 
     def wallet_send(address, amount)
-      oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount})
+      oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount}).data
     end
 
     def wallet_send_with_pin(address, amount, pin)
-      oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount, :pin=>pin}) if valid_pin?(pin)
+      oauth_request(:post, '/api/wallet-send/', {:address=>address, :amount=>amount, :pin=>pin}).data if valid_pin?(pin)
     end
 
     def valid_pin?(pin)
-      oauth_request(:post, '/api/pincode/', {:pincode=>pin})['data']['pincode_ok']
+      oauth_request(:post, '/api/pincode/', {:pincode=>pin}).data.pincode_ok
     end
 
     def wallet_addr
-      oauth_request(:post, '/api/wallet-addr/')
+      oauth_request(:post, '/api/wallet-addr/').data
     end
   end
 end

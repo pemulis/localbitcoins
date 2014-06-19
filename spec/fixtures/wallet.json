@@ -1,0 +1,54 @@
+{ "wallet_list":[
+
+    {
+        "message": "OK",
+        "total": {
+            "balance": "0.05",
+            "sendable": "0.05"},
+        "sent_transactions_30d": [
+            {"txid": "12345",
+                "amount": "0.05",
+                "description": "Internal send",
+                "tx_type": 5,
+                "created_at": "2014-12-20T15:27:36+00:00"}
+        ],
+        "received_transactions_30d": [
+            {"txid": "67890",
+                "amount": "1.02",
+                "description": "Internal send",
+                "tx_type": 5,
+                "created_at": "2014-11-20T15:12:22+00:00"}
+        ],
+        "receiving_address_count": 1,
+        "receiving_address_list": [{
+            "address": "15HfUY9LwwewaWwrKRXzE91tjDnHmye1hc",
+            "received": "1.02"}
+        ]
+    },
+    {
+        "message": "OK",
+        "total": {
+            "balance": "2.0",
+            "sendable": "5.0"},
+        "sent_transactions_30d": [
+            {"txid": "11111",
+                "amount": "3.05",
+                "description": "Internal send",
+                "tx_type": 5,
+                "created_at": "2014-12-20T15:22:12+00:00"}
+        ],
+        "received_transactions_30d": [
+            {"txid": "22222",
+                "amount": "5.10",
+                "description": "Internal send",
+                "tx_type": 5,
+                "created_at": "2014-11-20T15:04:10+00:00"}
+        ],
+        "receiving_address_count": 1,
+        "receiving_address_list": [{
+            "address": "15HfUY9LwwewaWwrKRXzE91tjDnHmye1hc",
+            "received": "5.10"}
+        ]
+    }
+    ]
+}

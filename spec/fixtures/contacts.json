@@ -1,0 +1,52 @@
+{"contact_list": {
+    "data": {
+        "created_at": "2013-12-06T15:23:01.61",
+        "buyer": {
+            "username": "hylje",
+            "trade_count": "30+",
+            "feedback_score": "100",
+            "name": "hylje (30+; 100)",
+            "last_seen_on": "2013-12-19T08:28:16+00:00"
+        },
+        "seller": {
+            "username": "jeremias",
+            "trade_count": "100+",
+            "feedback_score": "100",
+            "name": "jeremias (100+; 100)",
+            "last_seen_on": "2013-12-19T06:28:51+00:00"
+        },
+        "reference_code": "123",
+        "currency": "EUR",
+        "amount": "105.55",
+        "amount_btc": "190",
+        "exchange_rate_updated_at": "2013-06-20T15:23:01+00:00",
+        "advertisement": {
+            "id": 123,
+            "trade_type": "ONLINE_SELL"
+            "advertiser": {
+                "username": "jeremias",
+                "trade_count": "100+",
+                "feedback_score": "100",
+                "name": "jeremias (100+; 100)",
+                "last_seen_on": "2013-12-19T06:28:51.604754+00:00"
+            }
+        },
+        "contact_id": 1234
+        "canceled_at": null,
+        "escrowed_at": "2013-12-06T15:23:01+00:00",
+        "funded_at": "2013-12-06T15:23:01+00:00",
+        "disputed_at": null,
+        "closed_at": null,
+        "released_at": null,
+        "is_buying": true,
+        "is_selling": false,
+        "account_details": ! see below
+    },
+    "actions": {
+        "mark_as_paid_url": "/api/contact_mark_as_paid/1/",
+        "advertisement_public_view": "/ads/123",
+        "message_url": "/api/contact_messages/1234",
+        "message_post_url": "/api/contact_message_post/1234"
+        }
+    }
+}

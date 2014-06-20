@@ -98,7 +98,7 @@ describe 'Client' do
     end
 
     it 'returns balance information for the token owners wallet' do
-      expect{ client.wallet_balance }.not_to raise_error
+      expect { client.wallet_balance }.not_to raise_error
       wallet_balance = client.wallet_balance
       wallet_balance.should be_a Hashie::Mash
       wallet_balance.message.should eq "ok"
@@ -108,18 +108,170 @@ describe 'Client' do
     end
 
     it 'returns confirmation message for sending btc' do
-      expect{ client.wallet_send("15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc","0.001") }.not_to raise_error
+      expect { client.wallet_send("15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc","0.001") }.not_to raise_error
       wallet_send = client.wallet_send("15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc","0.001")
       wallet_send.should be_a Hashie::Mash
       wallet_send.message.should eq "Money is being sent"
     end
 
     it 'returns unused wallet address from token owners wallet' do
-      expect{ client.wallet_addr }.not_to raise_error
+      expect { client.wallet_addr }.not_to raise_error
       wallet_address = client.wallet_addr
       wallet_address.address.should eq "15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc"
       wallet_address.message.should eq "OK!"
     end
   end
 
+  describe "#contacts" do
+    before do
+      stub_post('/api/contact_message_post/12345/', 'contact_message.json')
+      stub_get('/api/dashboard/', 'contacts_active.json')
+      stub_get('/api/dashboard/buyer/', 'contacts_active_buyers.json')
+      stub_get('/api/dashboard/seller/', 'contacts_active_sellers.json')
+      stub_get('/api/dashboard/released/', 'contacts_released_contacts.json')
+      stub_get('/api/dashboard/canceled/', 'contacts_canceled_contacts.json')
+      stub_get('/api/dashboard/closed/', 'contacts_canceled_contacts.json')
+      stub_get('/api/contact_messages/12345/', 'contacts_messages.json')
+      stub_post('/api/contact_cancel/12345/','contacts_cancel.json')
+      stub_post('/api/contact_create/12345/', 'contacts_create.json')
+      stub_get('/api/contact_info/12345/', 'contacts_contact_info.json')
+      stub_get('/api/contact_info/', 'contacts_contacts_info.json', {:contacts=>"12345,54321"})
+    end
+
+    it 'returns confirmation for sending a message' do
+      expect { client.message_contact('12345', 'Text of the message.') }.not_to raise_error
+      contact_message = client.message_contact('12345', 'Text of the message.')
+      contact_message.should be_a Hashie::Mash
+      contact_message.message.should eq "Message sent successfully."
+    end
+
+    it 'returns active contact list for token owner' do
+      expect { client.active_contacts }.not_to raise_error
+      active_contacts = client.active_contacts
+      active_contacts.should be_a Hashie::Mash
+      active_contacts.contact_count.should eq 3
+      active_contacts.contact_list[0].data.currency.should eq "MXN"
+      active_contacts.contact_list[1].data.currency.should eq "MXN"
+      active_contacts.contact_list[2].data.currency.should eq "USD"
+      active_contacts.contact_list[0].data.amount.should eq "1.00"
+      active_contacts.contact_list[1].data.amount.should eq "2.00"
+      active_contacts.contact_list[2].data.amount.should eq "0.10"
+      active_contacts.contact_list[0].data.advertisement.id.should eq 1234567
+      active_contacts.contact_list[1].data.advertisement.id.should eq 1234567
+      active_contacts.contact_list[2].data.advertisement.id.should eq 1234567
+      active_contacts.contact_list[0].data.advertisement.advertiser.username.should eq "Bob"
+      active_contacts.contact_list[1].data.advertisement.advertiser.username.should eq "Bob"
+      active_contacts.contact_list[2].data.advertisement.advertiser.username.should eq "Alice"
+      active_contacts.contact_list[0].data.is_selling.should eq true
+      active_contacts.contact_list[1].data.is_selling.should eq true
+      active_contacts.contact_list[2].data.is_selling.should eq false
+      active_contacts.contact_list[0].data.is_buying.should eq false
+      active_contacts.contact_list[1].data.is_buying.should eq false
+      active_contacts.contact_list[2].data.is_buying.should eq true
+    end
+
+    it 'returns active buyer contacts for token owner' do
+      expect { client.active_contacts('buyer') }.not_to raise_error
+      active_buyer_contacts = client.active_contacts('buyer')
+      active_buyer_contacts.should be_a Hashie::Mash
+      active_buyer_contacts.contact_count.should eq 1
+      active_buyer_contacts.contact_list[0].data.advertisement.id.should eq 123456
+      active_buyer_contacts.contact_list[0].data.advertisement.advertiser.username.should eq "Alice"
+      active_buyer_contacts.contact_list[0].data.contact_id.should eq 543210
+    end
+
+    it 'returns active seller contacts for token owner' do
+      expect { client.active_contacts('seller') }.not_to raise_error
+      active_seller_contacts = client.active_contacts('seller')
+      active_seller_contacts.should be_a Hashie::Mash
+      active_seller_contacts.contact_count.should eq 2
+      active_seller_contacts.contact_list[0].data.currency.should eq "MXN"
+      active_seller_contacts.contact_list[1].data.currency.should eq "MXN"
+      active_seller_contacts.contact_list[0].data.payment_completed_at.should eq nil
+    end
+
+    it 'returns list of released contacts' do
+      expect { client.released_contacts }.not_to raise_error
+      released_contacts = client.released_contacts
+      released_contacts.should be_a Hashie::Mash
+      released_contacts.contact_count.should eq 1
+      released_contacts.contact_list[0].data.advertisement.id.should eq 123456
+      released_contacts.contact_list[0].data.advertisement.advertiser.username.should eq "Alice"
+      released_contacts.contact_list[0].data.contact_id.should eq 543210
+    end
+
+    it 'returns list of canceled contacts' do
+      expect { client.canceled_contacts }.not_to raise_error
+      canceled_contacts = client.canceled_contacts
+      canceled_contacts.should be_a Hashie::Mash
+      canceled_contacts.contact_count.should eq 3
+      canceled_contacts.contact_list[0].data.advertisement.advertiser.username.should eq "Bob"
+      canceled_contacts.contact_list[2].data.advertisement.advertiser.username.should eq "Bob"
+      canceled_contacts.contact_list[0].data.canceled_at.should eq "2014-06-19T20:34:18+00:00"
+      canceled_contacts.contact_list[2].data.canceled_at.should eq  "2014-06-19T18:56:45+00:00"
+      canceled_contacts.contact_list[1].data.amount.should eq "108.46"
+      canceled_contacts.contact_list[2].data.amount.should eq "100.02"
+    end
+
+    it 'returns list of closed contacts' do
+      expect { client.closed_contacts }.not_to raise_error
+      closed_contacts = client.closed_contacts
+      closed_contacts.should be_a Hashie::Mash
+      closed_contacts.contact_count.should eq 3
+      closed_contacts.contact_list[0].data.advertisement.advertiser.username.should eq "Bob"
+      closed_contacts.contact_list[2].data.advertisement.advertiser.username.should eq "Bob"
+      closed_contacts.contact_list[0].data.canceled_at.should eq "2014-06-19T20:34:18+00:00"
+      closed_contacts.contact_list[2].data.canceled_at.should eq  "2014-06-19T18:56:45+00:00"
+      closed_contacts.contact_list[1].data.amount.should eq "108.46"
+      closed_contacts.contact_list[2].data.amount.should eq "100.02"
+    end
+
+    it 'returns list of messages for a contact' do
+      expect { client.messages_from_contact('12345') }.not_to raise_error
+      contact_messages = client.messages_from_contact('12345')
+      contact_messages.should be_a Hashie::Mash
+      contact_messages.message_count.should eq 3
+      contact_messages.message_list[0].msg.should eq "Message body"
+      contact_messages.message_list[1].msg.should eq "Text of the message."
+      contact_messages.message_list[0].sender.username.should eq "Bob"
+      contact_messages.message_list[2].sender.username.should eq "Alice"
+    end
+
+    it 'returns confirmation on cancellation of a contact' do
+      expect { client.cancel_contact('12345') }.not_to raise_error
+      cancel_contact = client.cancel_contact('12345')
+      cancel_contact.should be_a Hashie::Mash
+      cancel_contact.message.should eq "Contact canceled."
+    end
+
+    it 'returns confirmation of contact creation' do
+      expect { client.create_contact('12345', '1000', 'Message body') }.not_to raise_error
+      create_contact = client.create_contact('12345', '1000', 'Message body')
+      create_contact.should be_a Hashie::Mash
+      create_contact.data.message.should eq "OK!"
+      create_contact.actions.contact_url.should eq "https://localbitcoins.com/api/contact_info/123456/"
+    end
+
+    it 'returns specified contact' do
+      expect { client.contact_info(12345) }.not_to raise_error
+      contact_info = client.contact_info(12345)
+      contact_info.data.advertisement.advertiser.username.should eq "Bob"
+      contact_info.data.buyer.username.should eq "Alice"
+      contact_info.data.advertisement.id.should eq 1234567
+      contact_info.actions.messages_url.should eq "https://localbitcoins.com/api/contact_messages/12345/"
+    end
+
+    it 'returns list of contacts, from specified list' do
+      expect { client.contacts_info('12345,54321') }.not_to raise_error
+      contacts = client.contacts_info('12345,54321')
+      contacts.should be_a Hashie::Mash
+      contacts.contact_count.should eq 2
+      contacts.contact_list[0].data.advertisement.advertiser.username.should eq "Bob"
+      contacts.contact_list[1].data.advertisement.advertiser.username.should eq "Bob"
+      contacts.contact_list[0].data.buyer.username.should eq "Alice"
+      contacts.contact_list[1].data.buyer.username.should eq "Alice"
+      contacts.contact_list[0].actions.cancel_url.should eq "https://localbitcoins.com/api/contact_cancel/12345/"
+    end
+
+  end
 end

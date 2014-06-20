@@ -1,0 +1,111 @@
+{
+  "data": {
+    "contact_list": [
+      {
+        "data": {
+          "exchange_rate_updated_at": "2014-06-19T19:50:43+00:00",
+          "advertisement": {
+            "advertiser": {
+              "username": "Bob",
+              "feedback_score": 100,
+              "trade_count": "30+",
+              "last_online": "2014-06-20T15:36:31+00:00",
+              "name": "Bob (30+; 100%)"
+            },
+            "trade_type": "LOCAL_SELL",
+            "id": 1234567
+          },
+          "is_buying": false,
+          "payment_completed_at": null,
+          "released_at": null,
+          "created_at": "2014-06-19T19:50:43+00:00",
+          "contact_id": 799943,
+          "seller": {
+            "username": "Bob",
+            "feedback_score": 100,
+            "trade_count": "30+",
+            "last_online": "2014-06-20T15:36:31+00:00",
+            "name": "Bob (30+; 100%)"
+          },
+          "currency": "MXN",
+          "amount": "1.00",
+          "is_selling": true,
+          "escrowed_at": null,
+          "amount_btc": "0.00009350",
+          "reference_code": "L791246BH58N",
+          "buyer": {
+            "username": "Alice",
+            "feedback_score": 95,
+            "trade_count": "10+",
+            "last_online": "2014-06-19T21:07:22+00:00",
+            "name": "Alice (10+; 95%)"
+          },
+          "closed_at": null,
+          "disputed_at": null,
+          "funded_at": "2014-06-19T19:50:43+00:00",
+          "canceled_at": null
+        },
+        "actions": {
+          "message_post_url": "https://localbitcoins.com/api/contact_message_post/12345/",
+          "advertisement_url": "https://localbitcoins.com/api/ad-get/1234567/",
+          "messages_url": "https://localbitcoins.com/api/contact_messages/12345/",
+          "cancel_url": "https://localbitcoins.com/api/contact_cancel/12345/",
+          "advertisement_public_view": "https://localbitcoins.com/ad/12345"
+        }
+      },
+      {
+        "data": {
+          "exchange_rate_updated_at": "2014-06-19T19:50:43+00:00",
+          "advertisement": {
+            "advertiser": {
+              "username": "Bob",
+              "feedback_score": 100,
+              "trade_count": "30+",
+              "last_online": "2014-06-20T15:36:31+00:00",
+              "name": "Bob (30+; 100%)"
+            },
+            "trade_type": "LOCAL_SELL",
+            "id": 654321
+          },
+          "is_buying": false,
+          "payment_completed_at": null,
+          "released_at": null,
+          "created_at": "2014-06-19T19:50:43+00:00",
+          "contact_id": 123456,
+          "seller": {
+            "username": "Bob",
+            "feedback_score": 100,
+            "trade_count": "30+",
+            "last_online": "2014-06-20T15:36:31+00:00",
+            "name": "Bob (30+; 100%)"
+          },
+          "currency": "MXN",
+          "amount": "1.00",
+          "is_selling": true,
+          "escrowed_at": null,
+          "amount_btc": "0.00009350",
+          "reference_code": "L791246BH58N",
+          "buyer": {
+            "username": "Alice",
+            "feedback_score": 95,
+            "trade_count": "10+",
+            "last_online": "2014-06-19T21:07:22+00:00",
+            "name": "Alice (10+; 95%)"
+          },
+          "closed_at": null,
+          "disputed_at": null,
+          "funded_at": "2014-06-19T19:50:43+00:00",
+          "canceled_at": null
+        },
+        "actions": {
+          "message_post_url": "https://localbitcoins.com/api/contact_message_post/012345/",
+          "advertisement_url": "https://localbitcoins.com/api/ad-get/654321/",
+          "messages_url": "https://localbitcoins.com/api/contact_messages/012345/",
+          "cancel_url": "https://localbitcoins.com/api/contact_cancel/012345/",
+          "advertisement_public_view": "https://localbitcoins.com/ad/654321"
+        }
+      }
+    ],
+    "contact_count": 2
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "data": {
+    "message": "OK!",
+    "funded": true,
+    "contact_id": 123456
+  },
+  "actions": {
+    "contact_url": "https://localbitcoins.com/api/contact_info/123456/"
+  }
+}

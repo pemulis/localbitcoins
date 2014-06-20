@@ -1,0 +1,14 @@
+{
+    "data": {
+        "username": "bob",
+        "trading_partners_count": 9,
+        "feedbacks_unconfirmed_count": 2,
+        "trade_volume_text": "Less than 25 BTC",
+        "has_common_trades": true,
+        "confirmed_trade_count_text": "2",
+        "blocked_count": 4,
+        "feedback_count": 1,
+        "url": "https://localbitcoins.com/p/bob/",
+        "trusted_count": 3
+    }
+}

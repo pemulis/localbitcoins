@@ -8,7 +8,7 @@ require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
-  config.color_enabled = true
+  config.color = true
 end
 
 def stub_get(path, fixture_name, params={})
@@ -18,6 +18,16 @@ def stub_get(path, fixture_name, params={})
                            'Authorization'=>'Bearer ACCESS_TOKEN','Content-Type'=>'application/x-www-form-urlencoded',
                            'User-Agent'=>'Faraday v0.9.0'}).to_return(:status => 200, :body => fixture(fixture_name),
                                                                       :headers => {})
+end
+
+def stub_get_unauth(path, fixture_name)
+  stub_request(:get, api_url(path)).
+      with(
+      # :query => {"Accept" => "application/json"},
+           :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                        # 'Content-Type'=>'application/x-www-form-urlencoded',
+                        'User-Agent'=>'Ruby'}).to_return(:status => 200, :body => fixture(fixture_name),
+                                                                   :headers => {})
 end
 
 def stub_post(path, fixture_name)

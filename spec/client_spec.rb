@@ -71,7 +71,7 @@ describe 'Client' do
     end
 
     it 'returns listing of ads from passed ids' do
-      expect{ client.ad_list("12345,123456") }.not_to raise_error
+      expect { client.ad_list("12345,123456") }.not_to raise_error
       ad_list = client.ad_list("12345,123456")
       ad_list.should be_a Hashie::Mash
       ad_list.count.should eq 2
@@ -98,7 +98,7 @@ describe 'Client' do
     end
 
     it 'returns balance information for the token owners wallet' do
-      expect{ client.wallet_balance }.not_to raise_error
+      expect { client.wallet_balance }.not_to raise_error
       wallet_balance = client.wallet_balance
       wallet_balance.should be_a Hashie::Mash
       wallet_balance.message.should eq "ok"
@@ -108,18 +108,99 @@ describe 'Client' do
     end
 
     it 'returns confirmation message for sending btc' do
-      expect{ client.wallet_send("15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc","0.001") }.not_to raise_error
+      expect { client.wallet_send("15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc","0.001") }.not_to raise_error
       wallet_send = client.wallet_send("15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc","0.001")
       wallet_send.should be_a Hashie::Mash
       wallet_send.message.should eq "Money is being sent"
     end
 
     it 'returns unused wallet address from token owners wallet' do
-      expect{ client.wallet_addr }.not_to raise_error
+      expect { client.wallet_addr }.not_to raise_error
       wallet_address = client.wallet_addr
       wallet_address.address.should eq "15HfUY9LwwewaWwrKRXzE91tjDnHmy2d2hc"
       wallet_address.message.should eq "OK!"
     end
   end
+
+  describe "#users" do
+    before do
+      stub_get('/api/myself/', 'myself.json')
+      stub_get('/api/account_info/bob/', 'account_info.json')
+      stub_post('/api/logout/', 'logout.json')
+    end
+
+    it 'returns user information on the token owner' do
+      expect { client.myself }.not_to raise_error
+      myself = client.myself
+      myself.username.should eq "alice"
+      myself.has_common_trades.should eq false
+      myself.trusted_count.should eq 4
+    end
+
+    it 'returns user information on user with specified username' do
+      expect { client.account_info('bob') }.not_to raise_error
+      account_info = client.account_info('bob')
+      account_info.username.should eq "bob"
+      account_info.trade_volume_text.should eq "Less than 25 BTC"
+      account_info.url.should eq "https://localbitcoins.com/p/bob/"
+    end
+
+    it 'immediately expires currently authorized access_token' do
+      #expect { client.logout }.not_to raise_error
+
+    end
+  end
+
+  describe "#markets" do
+    before do
+      stub_get_unauth('/bitcoinaverage/ticker-all-currencies/', 'ticker.json')
+      stub_get_unauth('/bitcoincharts/USD/trades.json?since=170892', 'trades.json')
+      stub_get_unauth('/bitcoincharts/USD/orderbook.json', 'orderbook.json')
+
+
+    end
+
+    it 'returns current bitcoin prices in all currencies' do
+      expect { client.ticker }.not_to raise_error
+      ticker = client.ticker
+      ticker.USD.volume_btc.should eq "701.42"
+      ticker.MXN.rates.last.should eq "8431.10"
+      ticker.PHP.avg_12h.should eq 24559.67
+    end
+
+    it 'returns last 500 trades in a specified currency since last_tid' do
+      expect { client.trades('USD', '170892') }.not_to raise_error
+      trades = client.trades('USD', '170892')
+      trades.should be_a Array
+      trades[0]['tid'].should eq 170892
+      trades[-1]['amount'].should eq "1.54970000"
+    end
+
+    it 'immediately expires currently authorized access_token' do
+      expect { client.orderbook('USD') }.not_to raise_error
+      orderbook = client.orderbook('USD')
+      orderbook.should be_a Hashie::Mash
+      orderbook.asks[0][1].should eq "1190.53"
+      orderbook.bids[-1][0].should eq "0.16"
+    end
+  end
+
+  describe "#public" do
+    before do
+      stub_get_unauth('/buy-bitcoins-online/{countrycode:2}/{country_name}/{payment_method}/.json', )
+      stub_get_unauth('/buy-bitcoins-online/{countrycode:2}/{country_name}/.json', )
+      stub_get_unauth('/buy-bitcoins-online/{currency:3}/{payment_method}/.json', )
+      stub_get_unauth('/buy-bitcoins-online/{currency:3}/.json', )
+      stub_get_unauth('/buy-bitcoins-online/{payment_method}/.json', )
+      stub_get_unauth('/buy-bitcoins-online/.json', )
+      stub_get_unauth('/sell-bitcoins-online/{countrycode:2}/{country_name}/{payment_method}/.json', )
+      stub_get_unauth('/sell-bitcoins-online/{countrycode:2}/{country_name}/.json', )
+      stub_get_unauth('/sell-bitcoins-online/{currency:3}/{payment_method}/.json', )
+      stub_get_unauth('/sell-bitcoins-online/{currency:3}/.json', )
+      stub_get_unauth('/sell-bitcoins-online/{payment_method}/.json', )
+      stub_get_unauth('/sell-bitcoins-online/.json', )
+    end
+  end
+
 
 end

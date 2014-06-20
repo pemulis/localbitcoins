@@ -28,7 +28,7 @@ module LocalBitcoins
     end
 
     def create_contact(ad_id, amount, message=nil)
-      oauth_request(:post, "/api/contact_create/#{ad_id}/", {:amount=>amount, :message=>message}).data
+      oauth_request(:post, "/api/contact_create/#{ad_id}/", {:amount=>amount, :message=>message})
     end
 
     def contact_info(contact_id)

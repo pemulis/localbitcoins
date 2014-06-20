@@ -1,0 +1,14 @@
+{
+    "data": {
+        "username": "alice",
+        "trading_partners_count": 25,
+        "feedbacks_unconfirmed_count": 1,
+        "trade_volume_text": "Less than 25 BTC",
+        "has_common_trades": false,
+        "confirmed_trade_count_text": "40",
+        "blocked_count": 0,
+        "feedback_count": 2,
+        "url": "https://localbitcoins.com/p/alice/",
+        "trusted_count": 4
+    }
+}

@@ -1,0 +1,505 @@
+{
+    "data":{
+        "currencies":{
+            "DZD":{
+
+            },
+            "NAD":{
+
+            },
+            "GHS":{
+
+            },
+            "EGP":{
+                "name":"Egyptian Pound"
+            },
+            "BGN":{
+
+            },
+            "PAB":{
+
+            },
+            "BOB":{
+
+            },
+            "DKK":{
+                "name":"Danish Krona"
+            },
+            "BWP":{
+
+            },
+            "LBP":{
+
+            },
+            "TZS":{
+
+            },
+            "VND":{
+                "name":"Vietnamese Dong"
+            },
+            "AOA":{
+
+            },
+            "KHR":{
+
+            },
+            "MYR":{
+                "name":"Malaysian Ringgit"
+            },
+            "KYD":{
+
+            },
+            "LYD":{
+
+            },
+            "UAH":{
+
+            },
+            "JOD":{
+
+            },
+            "AWG":{
+
+            },
+            "SAR":{
+                "name":"Saudi Riyal"
+            },
+            "EUR":{
+                "name":"Euro"
+            },
+            "HKD":{
+                "name":"Hong Kong Dollar"
+            },
+            "CHF":{
+                "name":"Swiss Franc"
+            },
+            "GIP":{
+
+            },
+            "XAR":{
+
+            },
+            "BYR":{
+                "name":"Belarusian Ruble"
+            },
+            "ALL":{
+
+            },
+            "MRO":{
+
+            },
+            "HRK":{
+                "name":"Croatian kuna"
+            },
+            "DJF":{
+
+            },
+            "SZL":{
+
+            },
+            "THB":{
+                "name":"Thai Baht"
+            },
+            "XAF":{
+
+            },
+            "BND":{
+
+            },
+            "ISK":{
+
+            },
+            "UYU":{
+
+            },
+            "NIO":{
+
+            },
+            "LAK":{
+
+            },
+            "SYP":{
+
+            },
+            "MAD":{
+
+            },
+            "MZN":{
+
+            },
+            "PHP":{
+                "name":"Philippines Peso"
+            },
+            "ZAR":{
+                "name":"South African Rand"
+            },
+            "NPR":{
+
+            },
+            "ZWL":{
+
+            },
+            "NGN":{
+
+            },
+            "CRC":{
+
+            },
+            "AED":{
+                "name":"United Arab Emirates Dirham"
+            },
+            "EEK":{
+
+            },
+            "MWK":{
+
+            },
+            "LKR":{
+
+            },
+            "PKR":{
+
+            },
+            "HUF":{
+                "name":"Hungarian Forint"
+            },
+            "BMD":{
+                "name":"BermudIan Dollar"
+            },
+            "LSL":{
+
+            },
+            "MNT":{
+
+            },
+            "AMD":{
+
+            },
+            "UGX":{
+
+            },
+            "QAR":{
+                "name":"Qatari Riyal"
+            },
+            "XDR":{
+
+            },
+            "JMD":{
+                "name":"Jamaican Dollar"
+            },
+            "GEL":{
+
+            },
+            "SHP":{
+
+            },
+            "AFN":{
+
+            },
+            "SBD":{
+
+            },
+            "KPW":{
+
+            },
+            "TRY":{
+                "name":"Turkish Lira"
+            },
+            "BDT":{
+
+            },
+            "YER":{
+
+            },
+            "HTG":{
+
+            },
+            "XOF":{
+
+            },
+            "MGA":{
+
+            },
+            "ANG":{
+
+            },
+            "LRD":{
+
+            },
+            "RWF":{
+
+            },
+            "NOK":{
+                "name":"Norwegian Krona"
+            },
+            "MOP":{
+
+            },
+            "INR":{
+                "name":"Indian Rupee"
+            },
+            "MXN":{
+                "name":"Mexican Peso"
+            },
+            "CZK":{
+                "name":"Czech Koruna"
+            },
+            "TJS":{
+
+            },
+            "BTN":{
+
+            },
+            "COP":{
+                "name":"Colombian Peso"
+            },
+            "TMT":{
+
+            },
+            "MUR":{
+
+            },
+            "IDR":{
+                "name":"Indonesian Rupiah"
+            },
+            "HNL":{
+
+            },
+            "XPF":{
+
+            },
+            "FJD":{
+
+            },
+            "ETB":{
+
+            },
+            "PEN":{
+                "name":"Peruvian New Sol"
+            },
+            "BZD":{
+
+            },
+            "ILS":{
+                "name":"Israeli Shekel"
+            },
+            "DOP":{
+
+            },
+            "TWD":{
+                "name":"Taiwan Dollar"
+            },
+            "MDL":{
+
+            },
+            "BSD":{
+
+            },
+            "SEK":{
+                "name":"Swedish Krona"
+            },
+            "ZMK":{
+
+            },
+            "JEP":{
+
+            },
+            "AUD":{
+                "name":"Australian Dollar"
+            },
+            "SRD":{
+
+            },
+            "CUP":{
+
+            },
+            "CLF":{
+
+            },
+            "BBD":{
+
+            },
+            "KMF":{
+
+            },
+            "KRW":{
+                "name":"South Korean won"
+            },
+            "GMD":{
+
+            },
+            "VEF":{
+
+            },
+            "GTQ":{
+
+            },
+            "CLP":{
+                "name":"Chilean Peso"
+            },
+            "ZMW":{
+
+            },
+            "LTL":{
+
+            },
+            "CDF":{
+
+            },
+            "XCD":{
+
+            },
+            "KZT":{
+                "name":"Tenge"
+            },
+            "RUB":{
+                "name":"Russian Ruble"
+            },
+            "XAG":{
+
+            },
+            "TTD":{
+                "name":"Trinidad and Tobago Dollar"
+            },
+            "OMR":{
+
+            },
+            "BRL":{
+                "name":"Brazilian Real"
+            },
+            "MMK":{
+                "name":"Burmese Kyat"
+            },
+            "PLN":{
+                "name":"Polish Zloty"
+            },
+            "PYG":{
+
+            },
+            "KES":{
+
+            },
+            "SVC":{
+
+            },
+            "MKD":{
+
+            },
+            "GBP":{
+                "name":"British Pound"
+            },
+            "AZN":{
+
+            },
+            "TOP":{
+
+            },
+            "MVR":{
+
+            },
+            "VUV":{
+
+            },
+            "GNF":{
+
+            },
+            "WST":{
+
+            },
+            "IQD":{
+
+            },
+            "ERN":{
+
+            },
+            "BAM":{
+
+            },
+            "SCR":{
+
+            },
+            "CAD":{
+                "name":"Canadian Dollar"
+            },
+            "CVE":{
+
+            },
+            "KWD":{
+
+            },
+            "BIF":{
+
+            },
+            "PGK":{
+
+            },
+            "SOS":{
+
+            },
+            "SGD":{
+                "name":"Singapore Dollar"
+            },
+            "UZS":{
+
+            },
+            "STD":{
+
+            },
+            "IRR":{
+
+            },
+            "CNY":{
+                "name":"Chinese Renminbi"
+            },
+            "SLL":{
+
+            },
+            "TND":{
+
+            },
+            "GYD":{
+
+            },
+            "MTL":{
+
+            },
+            "NZD":{
+                "name":"New-Zealand Dollar"
+            },
+            "FKP":{
+
+            },
+            "LVL":{
+
+            },
+            "USD":{
+                "name":"US Dollar"
+            },
+            "KGS":{
+
+            },
+            "ARS":{
+                "name":"Argentine Peso"
+            },
+            "RON":{
+                "name":"Romanian Leu"
+            },
+            "RSD":{
+
+            },
+            "BHD":{
+
+            },
+            "JPY":{
+                "name":"Japanese Yen"
+            },
+            "SDG":{
+
+            },
+            "XAU":{
+
+            }
+        },
+        "currency_count":166
+    }
+}

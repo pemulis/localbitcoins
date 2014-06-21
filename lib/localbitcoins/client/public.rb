@@ -14,11 +14,11 @@ module LocalBitcoins
     # NOTE: countrycode must be 2 characters and currency must be 3 characters
     #
     def online_buy_ads_lookup(params={})
-      params.each do |k,v|
-          params[k]=v<<'/' unless v.nil?
+      params.each_key do |k|
+          params[k]<<'/'
       end
       online_buy_ads_uri = open("#{ROOT}/buy-bitcoins-online/#{params[:countrycode]}#{params[:currency]}#{params[:country_name]}#{params[:payment_method]}.json")
-      Hashie::Mash.new(JSON.parse(online_buy_ads_uri.read)).data if online_buy_ads_uri.status.first=='200'
+      Hashie::Mash.new(JSON.parse(online_buy_ads_uri.read)) if online_buy_ads_uri.status.first=='200'
     end
 
     # NOTE: Same format as online_buy_ads_lookup, but buy is replaced with sell
@@ -28,7 +28,7 @@ module LocalBitcoins
           params[k]=v<<'/' unless v.nil?
       end
       online_sell_ads_uri = open("#{ROOT}/sell-bitcoins-online/#{params[:countrycode]}#{params[:currency]}#{params[:country_name]}#{params[:payment_method]}.json")
-      Hashie::Mash.new(JSON.parse(online_sell_ads_uri.read)).data if online_sell_ads_uri.status.first=='200'
+      Hashie::Mash.new(JSON.parse(online_sell_ads_uri.read)) if online_sell_ads_uri.status.first=='200'
     end
 
     def payment_methods(countrycode)
@@ -52,14 +52,14 @@ module LocalBitcoins
     #
     def local_buy_ad(params)
       local_buy_ad_uri = open("#{ROOT}/buy-bitcoins-with-cash/#{params[:location_id]}/#{params[:location_slug].downcase}/.json?lat=#{params[:lat]}&lon=#{params[:lon]}")
-      Hashie::Mash.new(JSON.parse(local_buy_ad_uri.read)).data if local_buy_ad_uri.status.first=='200'
+      Hashie::Mash.new(JSON.parse(local_buy_ad_uri.read)) if local_buy_ad_uri.status.first=='200'
     end
 
     # NOTE: Same format as local_buy_ad, but buy is replaced with sell
     #
     def local_sell_ad(params={})
       local_sell_ad_uri = open("#{ROOT}/sell-bitcoins-with-cash/#{params[:location_id]}/#{params[:location_slug].downcase}/.json?lat=#{params[:lat]}&lon=#{params[:lon]}")
-      Hashie::Mash.new(JSON.parse(local_sell_ad_uri.read)).data if local_sell_ad_uri.status.first=='200'
+      Hashie::Mash.new(JSON.parse(local_sell_ad_uri.read)) if local_sell_ad_uri.status.first=='200'
     end
 
     # - Required fields -

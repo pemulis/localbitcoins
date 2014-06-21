@@ -1,0 +1,95 @@
+{
+    "data":{
+        "methods":{
+            "cashu":{
+                "code":"CASHU",
+                "name":"CashU"
+            },
+            "moneygram":{
+                "code":"MONEYGRAM",
+                "name":"Moneygram"
+            },
+            "cashiers-check":{
+                "code":"CASHIERS_CHECK",
+                "name":"Cashier's check"
+            },
+            "solidtrustpay":{
+                "code":"SOLIDTRUSTPAY",
+                "name":"SolidTrustPay"
+            },
+            "neteller":{
+                "code":"NETELLER",
+                "name":"Neteller"
+            },
+            "dwolla":{
+                "code":"DWOLLA",
+                "name":"Dwolla"
+            },
+            "venmo":{
+                "code":"VENMO",
+                "name":"Venmo"
+            },
+            "western-union":{
+                "code":"WU",
+                "name":"Western Union"
+            },
+            "okpay":{
+                "code":"OKPAY",
+                "name":"OKPay"
+            },
+            "webmoney":{
+                "code":"WEBMONEY",
+                "name":"WebMoney"
+            },
+            "paypal":{
+                "code":"PAYPAL",
+                "name":"Paypal"
+            },
+            "transferwise":{
+                "code":"TRANSFERWISE",
+                "name":"Transferwise"
+            },
+            "international-wire-swift":{
+                "code":"INTERNATIONAL_WIRE_SWIFT",
+                "name":"International Wire (SWIFT)"
+            },
+            "chase-quickpay":{
+                "code":"CHASE_QUICKPAY",
+                "name":"Chase Quickpay"
+            },
+            "ukash":{
+                "code":"UKASH",
+                "name":"Ukash"
+            },
+            "egopay":{
+                "code":"EGOPAY",
+                "name":"EgoPay"
+            },
+            "payza":{
+                "code":"PAYZA",
+                "name":"Payza"
+            },
+            "vanilla":{
+                "code":"VANILLA",
+                "name":"Vanilla"
+            },
+            "moneypak":{
+                "code":"MONEYPAK",
+                "name":"MoneyPak"
+            },
+            "perfect-money":{
+                "code":"PERFECT_MONEY",
+                "name":"Perfect Money"
+            },
+            "moneybookers-skrill":{
+                "code":"MONEYBOOKERS",
+                "name":"Moneybookers / Skrill"
+            },
+            "postal-order":{
+                "code":"POSTAL_ORDER",
+                "name":"Postal order"
+            }
+        },
+        "method_count":22
+    }
+}

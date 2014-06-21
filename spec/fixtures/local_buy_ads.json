@@ -1,0 +1,93 @@
+{
+    "data":{
+        "ad_list":[
+            {
+                "data":{
+                    "require_feedback_score":90,
+                    "reference_type":"SHORT",
+                    "trusted_required":false,
+                    "currency":"CDF",
+                    "age_days_coefficient_limit":"4.00",
+                    "first_time_limit_btc":"0.50",
+                    "city":"Dubai",
+                    "location_string":"Dubai, UAE",
+                    "countrycode":"AE",
+                    "max_amount":"9895",
+                    "lon":-105.23,
+                    "sms_verification_required":true,
+                    "require_trade_volume":0.00,
+                    "online_provider":"NATIONAL_BANK",
+                    "max_amount_available":"9895",
+                    "msg":"Contact hours: 12:00-24:00\r\n\r\nMeeting preferences: McDonalds only\r\n\r\nNot really hoping to sell any congolese francs in dubai, just checking market size here.\r\n",
+                    "email":"bobthebuilder@email.com",
+                    "volume_coefficient_btc":"1.50",
+                    "profile":{
+                        "username":"bob",
+                        "feedback_score":100,
+                        "trade_count":"1",
+                        "last_online":"2014-06-19T21:07:22+00:00",
+                        "name":"bob (1; 100%)"
+                    },
+                    "bank_name":"",
+                    "trade_type":"LOCAL_SELL",
+                    "ad_id":123456,
+                    "temp_price":"99999999.01",
+                    "min_amount":"1",
+                    "temp_price_usd":"12309531",
+                    "lat":130,
+                    "distance":0,
+                    "visible":true,
+                    "created_at":"2014-06-18T18:07:06+00:00",
+                    "atm_model":null
+                },
+                "actions":{
+                    "public_view":"https://localbitcoins.com/ad/123456"
+                }
+            },
+            {
+                "data":{
+                    "require_feedback_score":0,
+                    "reference_type":"SHORT",
+                    "trusted_required":false,
+                    "currency":"CDF",
+                    "age_days_coefficient_limit":"4.00",
+                    "first_time_limit_btc":null,
+                    "city":"Cuernavaca",
+                    "location_string":"Dubai, UAE",
+                    "countrycode":"AE",
+                    "max_amount":"5000",
+                    "lon":-40.23,
+                    "sms_verification_required":true,
+                    "require_trade_volume":0.00,
+                    "online_provider":"NATIONAL_BANK",
+                    "max_amount_available":"5000",
+                    "msg":"Fell in a hole and found a secret and magical world! Bitcoins grow on trees down here ;)",
+                    "email":"alice@wonderland.com",
+                    "volume_coefficient_btc":"1.50",
+                    "profile":{
+                        "username":"alice",
+                        "feedback_score":100,
+                        "trade_count":"30+",
+                        "last_online":"2014-06-20T20:07:58+00:00",
+                        "name":"alice (30+; 100%)"
+                    },
+                    "bank_name":"",
+                    "trade_type":"LOCAL_SELL",
+                    "ad_id":67890,
+                    "temp_price":"8200.51",
+                    "min_amount":"500",
+                    "temp_price_usd":"631.16",
+                    "lat":40.92,
+                    "distance":617.01,
+                    "visible":true,
+                    "created_at":"2014-01-09T18:12:22+00:00",
+                    "atm_model":null
+                },
+                "actions":{
+                    "public_view":"https://localbitcoins.com/ad/67890"
+                }
+            }
+        ],
+        "ad_count":2
+    }
+}

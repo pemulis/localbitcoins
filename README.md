@@ -228,19 +228,79 @@ client.mark_contact_as_paid(contact_id)
 
 ### Users
 
+Return info on the token owner
+``` ruby
+myself = client.myself
+```
 
+Return an account based on the username.
+``` ruby
+user = client.account_info(username)
+```
+
+Immediately expire the currently authorized access_token.
+NOTE: This method may not work. We're looking into it.
+``` ruby
+client.logout
+```
 
 ### Wallet
 
+Return info on the token owner's wallet
+``` ruby
+wallet = client.wallet
+```
 
+Return the token owner's wallet balance
+``` ruby
+balance = client.wallet_balance
+```
+
+Return the address of the token owner's wallet
+``` ruby
+address = client.wallet_addr
+```
+
+Send bitcoin from the token owner's wallet
+``` ruby
+# returns message on success
+client.wallet_send(address, amount)
+```
+NOTE: The LocalBitcoins documentation does not specify where pins can be acquired, though use of a pin requires the 'money_pin' token scope.
+
+Send bitcoin from token owner's wallet using pin code
+``` ruby
+#returns message no success
+client.wallet_pin_send(address, amount, pin)
+```
+
+Check if a pin is valid
+``` ruby
+client.valid_pin?(pin)
+```
 
 ## Public API
 
-
-
 ### Markets
+Return a ticker of bitcoin prices in various currencies.
+``` ruby
+ticker = client.ticker
+```
 
+Return a batch of 500 trades in the specifed currency
+``` ruby
+# currency is the 3 letter currency code
+trades = client.trades(currency)
 
+# since is an optional trade id - will return the next 500 trades after the specifed id
+trades = client.trades(currency, 12345) 
+```
+
+Return the LocalBitcoins online orderbook in a specified currency
+``` ruby
+# currency is the 3 letter currency code
+orderbook = client.orderbook(currency)
+```
 
 ### Ad Listings
 

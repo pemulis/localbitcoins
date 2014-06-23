@@ -72,11 +72,9 @@ There are several ways to solve the problem of keeping your credentials secret. 
 
 Nearly every endpoint found [in the documentation](https://localbitcoins.com/api-docs) is supported by this gem.
 
-The modules for groups of endpoints are located in `/localbitcoins/client/`
-
 ### Ads
 
-You can get a list of the token owner's ads with the following method:
+Return a list of the token owner's ads with the following method:
 
 ``` ruby
 ads = client.ads
@@ -88,46 +86,150 @@ ads.ad_list.each do |a|
   # and many more pieces of data!
 end
 ```
-
-For a full list of info you can get with this method, view the [API documentation](https://localbitcoins.com/api-docs/).
-
-
-You can get a list of the token owner's releaseable escrows through the OAuth client. You can also use the client to release an escrow.
-
-### View Releaseable Escrows
+Create a new ad for the token owner:
 
 ``` ruby
-escrows = client.escrows
-
-escrows.escrow_list.each do |e|
-  e.data.created_at     # => UTC datetime escrow was created at
-  e.data.buyer_username # => username of the buyer
-  e.data.reference_code # => reference code for the escrow
-  
-  e.actions.release_url # => url to release to escrow
-end
+# - Required fields -
+# min_amount                - minimum amount for sale in fiat [string]
+# max_amount                - maximum amount for sale in fiat [string]
+# price_equation            - price using price equation operators [string]
+# lat                       - latitude of location [float]
+# lon                       - longitude of location [float]
+# city                      - city of listing [string]
+# location_string           - text representation of location [string]
+# countrycode               - two letter countrycode [string]
+# account_info              - [string]
+# bank_name                 - [string]
+# sms_verification_required - only receive contacts with verified phone numbers [boolean]
+# track_max_amount          - decrease max sell amount in relation to liquidity [boolean]
+# trusted_required          - only allow trusted contacts [boolean]
+# currency                  - three letter fiat representation [string]
+#
+# pass a hash of the above fields
+# returns a message on success
+client.create_ad(params)
 ```
 
-Use the release_url from `escrows` method in the `escrow_release` method below:
-
-### Release An Escrow
+Update existing ad for the token owner
 
 ``` ruby
+# - Required Fields -
+# id             - id of the ad you want to update
+# visibility     - the ad's visibility [boolean]
+# price_equation - equation to calculate price [string]
+#
+# NOTE 1: Setting min_amount or max_amount to nil will unset them.
+# NOTE 2: "Floating price" must be false in you ad's edit form for price_equation to go through
+#
+# pass a hash of the above fields, plus any other editable fields
+# returns a message on success
+client.update_ad(id,params)
+``` 
+
+List of ads from a comma separated string of ids
+``` ruby
+# pass a comma separated string of ids
+ads = client.ad_list("12345,123456,1234567")
+``` 
+Gets a single ad from its id
+
+``` ruby
+ad = client.ad(12345)
+```
+### Escrows
+
+View token owner's releasable escrows
+NOTE: This endpoint is not documented by LocalBitcoins and may or may not work.
+``` ruby
+escrows = client.escrows
+# escrows are listed in escrows.escrow_list
+```
+Release an escrow
+``` ruby
+# pass the id of the contact which the escrow is associated with
 # returns a complimentary message if the escrow successfully released
-release = client.escrow_release(release_url)
+release = client.escrow_release(contact_id)
 ```
 
 ### Contacts
 
+List of active contacts
+``` ruby
+# This method can filter contacts by contact_type, which can be "buyer" or "seller"
+#
+# buyers and sellers
+contacts = client.active_contacts
+# buyers only
+contacts = client.active_contacts('buyer')
+# sellers only 
+contacts = client.active_contacts('seller')
+```
+
+Released, canceled, and closed contacts have their own methods as well, which can be filtered the same as above.
+``` ruby
+released = client.released_contacts
+closed = client.closed_contacts
+canceled = client.canceled_contacts
+``` 
+
+Get a contact based on the id
+``` ruby
+contact = client.contact_info(1234)
+```
+
+Get a list of contacts from a comma separated string of ids
+``` ruby
+contacts = client.contacts_info("1234,12345,1234567")
+# access list at contacts.contact_list
+```
+Create a new contact for the token owner
+``` ruby
+client.create_contact(ad_id, amount, message)
+```
+Fund an active contact for the token owner
+``` ruby
+client.fund_contact(contact_id)
+```
+Cancel an active contact for the token owner
+``` ruby
+client.cancel_contact(contact_id)
+```
+Initiate a dispute with on a contact for the token owner
+``` ruby
+client.dispute_contact(contact_id)
+```
+Send a message to a contact for the token owner
+``` ruby
+client.message_contact(contact_id, message)
+```
+Return all messages from a contact
+``` ruby
+messages = client.messages_from_contact(contact_id)
+```
+Mark a contact as paid for the token owner
+``` ruby
+client.mark_contact_as_paid(contact_id)
+```
+
 ### Users
+
+
 
 ### Wallet
 
+
+
 ## Public API
+
+
 
 ### Markets
 
+
+
 ### Ad Listings
+
+
 
 ## License
 

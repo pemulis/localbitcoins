@@ -78,6 +78,15 @@ describe 'Client' do
       expect(ad_list.ad_list[0].data.ad_id).to eq 12345
       expect(ad_list.ad_list[1].data.ad_id).to eq 123456
     end
+
+    it 'returns ad from passed id' do
+      expect { client.ad("12345") }.not_to raise_error
+      ad = client.ad("12345")
+      expect(ad).to be_a Hashie::Mash
+      expect(ad.count).to eq 2
+      expect(ad.ad_list[0].data.ad_id).to eq 12345
+      expect(ad.ad_count).to eq 1
+    end
   end
 
   describe "#wallet" do

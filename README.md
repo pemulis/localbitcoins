@@ -145,6 +145,7 @@ escrows = client.escrows
 # escrows are listed in escrows.escrow_list
 ```
 Release an escrow
+
 ``` ruby
 # pass the id of the contact which the escrow is associated with
 # returns a complimentary message if the escrow successfully released
@@ -152,6 +153,7 @@ release = client.escrow_release(contact_id)
 ```
 
 ### Contacts
+<<<<<<< HEAD
 
 List of active contacts
 ``` ruby
@@ -171,7 +173,12 @@ released = client.released_contacts
 closed = client.closed_contacts
 canceled = client.canceled_contacts
 ``` 
-
+Get a contact based on the id
+``` ruby
+released = client.released_contacts
+closed = client.closed_contacts
+canceled = client.canceled_contacts
+``` 
 Get a contact based on the id
 ``` ruby
 contact = client.contact_info(1234)
@@ -209,6 +216,7 @@ messages = client.messages_from_contact(contact_id)
 Mark a contact as paid for the token owner
 ``` ruby
 client.mark_contact_as_paid(contact_id)
+
 ```
 
 ### Users

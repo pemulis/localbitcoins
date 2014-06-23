@@ -11,18 +11,21 @@ gem install localbitcoins
 
 Or include it in your Gemfile:
 ```
-gem 'openlibrary'
+gem 'localbitcoins'
 ```
 
-## Setting Up Your OAuth2 Client 
+You can use the gem with or without OAuth2 for authentication. Without authentication the API only allows access to the public endpoints, documented [here (Ad Listings)](https://localbitcoins.com/api-docs/public/) and [here (Market Data)](https://localbitcoins.com/api-docs/#toc7)
+### Authenticated Usage
 
-First, you need to [register your application](https://localbitcoins.com/accounts/api/) with LocalBitcoins to get your API keys. You will get a Client ID and a Client Secret, which you will use to get your OAuth2 access token. An OAuth2 access token is required for all requests to the LocalBitcoins API. 
+### Setting Up Your OAuth2 Client 
 
-There are a number of ways to implement OAuth2, and it is largely left up to you to decide how to do it. If you've never used OAuth2 before, reading [this tutorial](http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified) is a good place to start!
+For authenticated requests to the LocalBitcoins API, you must [register your application](https://localbitcoins.com/accounts/api/) and get your API credentials. Use the Client ID and Client Secret to receive an access token via OAuth2. There are a number of ways to implement OAuth2, and it is largely left up to you to decide how to do it. If you've never used OAuth2 before, reading [this tutorial](http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified) is a good place to start!
 
-Once you have your token, you can set up your client with the following code:
+Once you have your token, you can get to setting up the LocalBitcoins client.
 
-``` ruby
+```
+# Authenticated
+
 # long version
 client = LocalBitcoins::Client.new(
   client_id:     'CLIENT_ID',
@@ -35,6 +38,10 @@ client = LocalBitcoins.new(
   client_secret: 'CLIENT_SECRET',
   oauth_token:   'OAUTH_TOKEN'
 )
+
+# Unauthenticated
+client = LocalBitcoins.new
+
 ```
 
 ### Global Configuration
@@ -63,6 +70,28 @@ There are several ways to solve the problem of keeping your credentials secret. 
 
 ## Usage
 
+Nearly every endpoint found [in the documentation](https://localbitcoins.com/api-docs) is supported by this gem. Rather than document every method here, we encourage you to read the source to find the function you're looking for.
+
+The modules for groups of endpoints are located in `/localbitcoins/client/`
+
+### Ads
+
+You can get a list of the token owner's ads with the following method:
+
+``` ruby
+ads = client.ads
+
+ads.ad_list.each do |a|
+  a.data.visible    # => boolean value of the ad's visibility
+  a.data.email      # => valid e-mail string or null
+  a.data.location_string # => human-readable location
+  # and many more pieces of data!
+end
+```
+
+For a full list of info you can get with this method, view the [API documentation](https://localbitcoins.com/api-docs/).
+
+
 You can get a list of the token owner's releaseable escrows through the OAuth client. You can also use the client to release an escrow.
 
 ### View Releaseable Escrows
@@ -88,22 +117,6 @@ Use the release_url from `escrows` method in the `escrow_release` method below:
 release = client.escrow_release(release_url)
 ```
 
-### List Ads
-
-You can get a list of the token owner's ads with the following method:
-
-``` ruby
-ads = client.ads
-
-ads.ad_list.each do |a|
-  a.data.visible    # => boolean value of the ad's visibility
-  a.data.email      # => valid e-mail string or null
-  a.data.location_string # => human-readable location
-  # and many more pieces of data!
-end
-```
-
-For a full list of info you can get with this method, view the [API documentation](https://localbitcoins.com/api-docs/).
 
 ## License
 

@@ -153,7 +153,6 @@ release = client.escrow_release(contact_id)
 ```
 
 ### Contacts
-<<<<<<< HEAD
 
 List of active contacts
 ``` ruby
@@ -173,12 +172,14 @@ released = client.released_contacts
 closed = client.closed_contacts
 canceled = client.canceled_contacts
 ``` 
+
 Get a contact based on the id
 ``` ruby
 released = client.released_contacts
 closed = client.closed_contacts
 canceled = client.canceled_contacts
 ``` 
+
 Get a contact based on the id
 ``` ruby
 contact = client.contact_info(1234)
@@ -189,34 +190,40 @@ Get a list of contacts from a comma separated string of ids
 contacts = client.contacts_info("1234,12345,1234567")
 # access list at contacts.contact_list
 ```
+
 Create a new contact for the token owner
 ``` ruby
 client.create_contact(ad_id, amount, message)
 ```
+
 Fund an active contact for the token owner
 ``` ruby
 client.fund_contact(contact_id)
 ```
+
 Cancel an active contact for the token owner
 ``` ruby
 client.cancel_contact(contact_id)
 ```
+
 Initiate a dispute with on a contact for the token owner
 ``` ruby
 client.dispute_contact(contact_id)
 ```
+
 Send a message to a contact for the token owner
 ``` ruby
 client.message_contact(contact_id, message)
 ```
+
 Return all messages from a contact
 ``` ruby
 messages = client.messages_from_contact(contact_id)
 ```
+
 Mark a contact as paid for the token owner
 ``` ruby
 client.mark_contact_as_paid(contact_id)
-
 ```
 
 ### Users

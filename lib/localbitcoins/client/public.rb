@@ -31,7 +31,7 @@ module LocalBitcoins
       Hashie::Mash.new(JSON.parse(online_sell_ads_uri.read)) if online_sell_ads_uri.status.first=='200'
     end
 
-    def payment_methods(countrycode)
+    def payment_methods(countrycode=nil)
       countrycode<<'/' unless countrycode.nil?
       payment_methods_uri = open("#{ROOT}/api/payment_methods/#{countrycode}")
       Hashie::Mash.new(JSON.parse(payment_methods_uri.read)).data if payment_methods_uri.status.first=='200'

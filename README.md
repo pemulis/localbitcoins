@@ -296,13 +296,16 @@ trades = client.trades(currency)
 trades = client.trades(currency, 12345) 
 ```
 
-Return the LocalBitcoins online orderbook in a specified currency
+Return the LocalBitcoins online orderbook ( Bids and Asks ) in a specified currency
 ``` ruby
 # currency is the 3 letter currency code
 orderbook = client.orderbook(currency)
 ```
 
 ### Ad Listings
+``` ruby
+
+```
 
 
 

@@ -395,7 +395,7 @@ describe 'Client' do
       expect(ads.data.ad_list[1].data.msg).to eq "Hola, mundo!"
       expect(ads.data.ad_list[1].actions.public_view).to eq "https://localbitcoins.com/ad/67890"
     end
-    
+
     it 'shows the location information associated with a given latitude and longitude' do
       expect { client.places({:lat=>35, :lon=>100}) }.not_to raise_error
       places = client.places({:lat=>35, :lon=>100})

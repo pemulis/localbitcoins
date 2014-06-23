@@ -1,8 +1,9 @@
 # LocalBitcoins API Gem 0.0.4
 
-This gem provides a simple, extensible Ruby wrapper to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/).
+This gem provides a simple, extensible Ruby wrapper to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/). 
+This repository is a fork of the gem started by [John Shutt](https://github.com/pemulis/localbitcoins).
 
-## Installation
+## Installation & Setup 
 
 Install the gem:
 ```
@@ -14,16 +15,15 @@ Or include it in your Gemfile:
 gem 'localbitcoins'
 ```
 
-You can use the gem with or without OAuth2 for authentication. Without authentication the API only allows access to the public endpoints, documented [here (Ad Listings)](https://localbitcoins.com/api-docs/public/) and [here (Market Data)](https://localbitcoins.com/api-docs/#toc7)
-### Authenticated Usage
+You can use the gem with or without OAuth2 for authentication. Without authentication the API only allows access to the public endpoints documented [here (Ad Listings)](https://localbitcoins.com/api-docs/public/) and [here (Market Data)](https://localbitcoins.com/api-docs/#toc7)
 
-### Setting Up Your OAuth2 Client 
+### Setting Up The Client 
 
 For authenticated requests to the LocalBitcoins API, you must [register your application](https://localbitcoins.com/accounts/api/) and get your API credentials. Use the Client ID and Client Secret to receive an access token via OAuth2. There are a number of ways to implement OAuth2, and it is largely left up to you to decide how to do it. If you've never used OAuth2 before, reading [this tutorial](http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified) is a good place to start!
 
 Once you have your token, you can get to setting up the LocalBitcoins client.
 
-```
+``` ruby
 # Authenticated
 
 # long version
@@ -70,7 +70,7 @@ There are several ways to solve the problem of keeping your credentials secret. 
 
 ## Usage
 
-Nearly every endpoint found [in the documentation](https://localbitcoins.com/api-docs) is supported by this gem. Rather than document every method here, we encourage you to read the source to find the function you're looking for.
+Nearly every endpoint found [in the documentation](https://localbitcoins.com/api-docs) is supported by this gem.
 
 The modules for groups of endpoints are located in `/localbitcoins/client/`
 
@@ -117,6 +117,17 @@ Use the release_url from `escrows` method in the `escrow_release` method below:
 release = client.escrow_release(release_url)
 ```
 
+### Contacts
+
+### Users
+
+### Wallet
+
+## Public API
+
+### Markets
+
+### Ad Listings
 
 ## License
 

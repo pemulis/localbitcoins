@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.summary     = "LocalBitcoins API wrapper"
   s.description = "Ruby wrapper for the LocalBitcoins API"
   s.homepage    = "http://github.com/pemulis/localbitcoins"
-  s.authors     = ["John Shutt"]
-  s.email       = ["john.d.shutt@gmail.com"]
+  s.authors     = ["John Shutt", "Will Newman", "Albie Brown"]
+  s.email       = ["john.d.shutt@gmail.com","will.newman@rutgers.edu", "albert_brown@brown.edu"]
   s.homepage    = "http://shutt.in"
   s.license     = "MIT"
   

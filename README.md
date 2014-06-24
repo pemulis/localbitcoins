@@ -110,7 +110,7 @@ Create a new ad for the token owner:
 client.create_ad(params)
 ```
 
-Update existing ad for the token owner
+Update existing ad for the token owner.
 
 ``` ruby
 # - Required Fields -

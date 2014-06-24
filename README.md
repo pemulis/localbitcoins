@@ -348,6 +348,8 @@ Return a list of local sell ads in a certain place
 local_sell_ad = client.local_sell_ad(params)
 ```
 
+### Additional Public Methods
+
 Return all payment methods accepted on LocalBitcoins, with an option to limit the search to a specific country
 ``` ruby
 # countrycode is the 2 character countrycode

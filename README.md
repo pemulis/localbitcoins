@@ -70,7 +70,7 @@ There are several ways to solve the problem of keeping your credentials secret. 
 
 ## Usage
 
-Nearly every endpoint found [in the documentation](https://localbitcoins.com/api-docs) is supported by this gem.
+Nearly every endpoint found in both the [logged in](https://localbitcoins.com/api-docs) and [public](https://localbitcoins.com/api-docs/public/) documentation is supported by this gem.
 
 ### Ads
 
@@ -303,11 +303,75 @@ orderbook = client.orderbook(currency)
 ```
 
 ### Ad Listings
-``` ruby
 
+Return a list of online buy ads pertaining to specified parameters
+``` ruby
+# Accepts a hash of parameters, with a valid subset of the following keys: countrycode, currency, country_name, payment_method
+#
+# Valid API endpoints include:
+# /buy-bitcoins-online/{countrycode}/{country_name}/{payment_method}/.json
+# /buy-bitcoins-online/{countrycode}/{country_name}/.json
+# /buy-bitcoins-online/{currency}/{payment_method}/.json
+# /buy-bitcoins-online/{currency}/.json
+# /buy-bitcoins-online/{payment_method}/.json
+# /buy-bitcoins-online/.json
+#
+# NOTE: countrycode must be 2 characters and currency must be 3 characters
+online_buy_ads_lookup = client.online_buy_ads_lookup(params)
 ```
 
+Return a list of online sell ads pertaining to specified parameters
+``` ruby
+# Accepts a hash of parameters, with a valid subset of the following keys: countrycode, currency, country_name, payment_method
+#
+# NOTE: see valid API endpoints in online_buy_ads_lookup method above
+online_sell_ads_lookup = client.online_sell_ads_lookup(params)
+```
 
+Returns a list of local buy ads in a certain place
+``` ruby
+# - Required fields -
+# location_id               - id for location found using places method
+# location_slug             - slug name for location found using places method
+#
+# - Optional fields -
+# lat                       - latitude of location [float]
+# lon                       - longitude of location [float]
+#
+# pass a hash of the above fields
+local_buy_ad = client.local_buy_ad(params)
+```
+
+Return a list of local sell ads in a certain place
+``` ruby
+# pass a hash with the same fields as local_buy_ad
+local_sell_ad = client.local_sell_ad(params)
+```
+
+Return all payment methods accepted on LocalBitcoins, with an option to limit the search to a specific country
+``` ruby
+# countrycode is the 2 character countrycode
+payment_methods = client.payment_methods(countrycode)
+```
+
+Return all currencies accepted by the LocalBitcoins platform
+``` ruby
+currencies = client.currencies
+```
+
+Return information about the place at or near a specified latitude and longitude
+``` ruby
+# - Required fields -
+# lat                       - latitude of location [float]
+# lon                       - longitude of location [float]
+#
+# - Optional fields -
+# countrycode               - 2 letter countrycode
+# location_string           - location name in string form
+#
+# pass a hash of the above fields
+places = client.places(params)
+```
 
 ## License
 

@@ -31,17 +31,6 @@ module LocalBitcoins
       Hashie::Mash.new(JSON.parse(online_sell_ads_uri.read)) if online_sell_ads_uri.status.first=='200'
     end
 
-    def payment_methods(countrycode=nil)
-      countrycode<<'/' unless countrycode.nil?
-      payment_methods_uri = open("#{ROOT}/api/payment_methods/#{countrycode}")
-      Hashie::Mash.new(JSON.parse(payment_methods_uri.read)).data if payment_methods_uri.status.first=='200'
-    end
-
-    def currencies
-      currencies_uri = open("#{ROOT}/api/currencies/")
-      Hashie::Mash.new(JSON.parse(currencies_uri.read)).data if currencies_uri.status.first=='200'
-    end
-
     # - Required fields -
     # location_id               - id for location found using places method
     # location_slug             - slug name for location found using places method
@@ -50,7 +39,7 @@ module LocalBitcoins
     # lat                       - latitude of location [float]
     # lon                       - longitude of location [float]
     #
-    def local_buy_ad(params)
+    def local_buy_ad(params={})
       local_buy_ad_uri = open("#{ROOT}/buy-bitcoins-with-cash/#{params[:location_id]}/#{params[:location_slug].downcase}/.json?lat=#{params[:lat]}&lon=#{params[:lon]}")
       Hashie::Mash.new(JSON.parse(local_buy_ad_uri.read)) if local_buy_ad_uri.status.first=='200'
     end
@@ -60,6 +49,17 @@ module LocalBitcoins
     def local_sell_ad(params={})
       local_sell_ad_uri = open("#{ROOT}/sell-bitcoins-with-cash/#{params[:location_id]}/#{params[:location_slug].downcase}/.json?lat=#{params[:lat]}&lon=#{params[:lon]}")
       Hashie::Mash.new(JSON.parse(local_sell_ad_uri.read)) if local_sell_ad_uri.status.first=='200'
+    end
+
+    def payment_methods(countrycode=nil)
+      countrycode<<'/' unless countrycode.nil?
+      payment_methods_uri = open("#{ROOT}/api/payment_methods/#{countrycode}")
+      Hashie::Mash.new(JSON.parse(payment_methods_uri.read)).data if payment_methods_uri.status.first=='200'
+    end
+
+    def currencies
+      currencies_uri = open("#{ROOT}/api/currencies/")
+      Hashie::Mash.new(JSON.parse(currencies_uri.read)).data if currencies_uri.status.first=='200'
     end
 
     # - Required fields -

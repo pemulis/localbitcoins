@@ -17,7 +17,7 @@ module LocalBitcoins
     # NOTE 2: "Floating price" must be false in you ad's edit form for price_equation to go through
     #
     def update_ad(id, params={})
-      old_ad = ad(id).ad_list[0].data
+      old_ad = ad(id).data
       updated_params = {
           :min_amount => old_ad.min_amount,
           :max_amount => old_ad.max_amount,
@@ -54,7 +54,7 @@ module LocalBitcoins
     end
 
     def ad(ad_id)
-      oauth_request(:get, "/api/ad-get/#{ad_id}/").data
+      oauth_request(:get, "/api/ad-get/#{ad_id}/").data.ad_list[0]
     end
   end
 end

@@ -1,0 +1,93 @@
+{
+    "data":{
+        "ad_list":[
+            {
+                "data":{
+                    "require_feedback_score":0,
+                    "reference_type":"SHORT",
+                    "trusted_required":false,
+                    "currency":"USD",
+                    "age_days_coefficient_limit":"4.00",
+                    "first_time_limit_btc":null,
+                    "city":"Guadalajara",
+                    "location_string":"Guadalajara, JAL, Mexico",
+                    "countrycode":"MX",
+                    "max_amount":"20",
+                    "lon":-40.35,
+                    "sms_verification_required":false,
+                    "require_trade_volume":0.00,
+                    "online_provider":"NATIONAL_BANK",
+                    "max_amount_available":"80",
+                    "msg":"Hello world!",
+                    "email":null,
+                    "volume_coefficient_btc":"1.50",
+                    "profile":{
+                        "username":"bobby",
+                        "feedback_score":100,
+                        "trade_count":"0",
+                        "last_online":"2014-06-19T05:10:44+00:00",
+                        "name":"bobby (0)"
+                    },
+                    "bank_name":"",
+                    "trade_type":"LOCAL_BUY",
+                    "ad_id":12345,
+                    "temp_price":"594.83",
+                    "min_amount":"5",
+                    "temp_price_usd":"594.83",
+                    "lat":20.66,
+                    "distance":187.06,
+                    "visible":true,
+                    "created_at":"2014-04-02T05:07:01+00:00",
+                    "atm_model":null
+                },
+                "actions":{
+                    "public_view":"https://localbitcoins.com/ad/12345"
+                }
+            },
+            {
+                "data":{
+                    "require_feedback_score":0,
+                    "reference_type":"SHORT",
+                    "trusted_required":false,
+                    "currency":"MXN",
+                    "age_days_coefficient_limit":"4.00",
+                    "first_time_limit_btc":null,
+                    "city":"San Luis Potosi",
+                    "location_string":"San Luis Potosi, Mexico",
+                    "countrycode":"MX",
+                    "max_amount":"1500",
+                    "lon":-100.99,
+                    "sms_verification_required":true,
+                    "require_trade_volume":0.00,
+                    "online_provider":"NATIONAL_BANK",
+                    "max_amount_available":"1500",
+                    "msg":"Hola, mundo!",
+                    "email":null,
+                    "volume_coefficient_btc":"1.50",
+                    "profile":{
+                        "username":"alicia",
+                        "feedback_score":100,
+                        "trade_count":"30+",
+                        "last_online":"2014-06-20T20:04:58+00:00",
+                        "name":"alicia (30+; 100%)"
+                    },
+                    "bank_name":"",
+                    "trade_type":"LOCAL_BUY",
+                    "ad_id":67890,
+                    "temp_price":"7181.61",
+                    "min_amount":"100",
+                    "temp_price_usd":"593.52",
+                    "lat":40.26,
+                    "distance":480.57,
+                    "visible":true,
+                    "created_at":"2013-11-22T05:36:08+00:00",
+                    "atm_model":null
+                },
+                "actions":{
+                    "public_view":"https://localbitcoins.com/ad/67890"
+                }
+            }
+        ],
+        "ad_count":2
+    }
+}

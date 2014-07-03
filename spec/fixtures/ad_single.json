@@ -1,0 +1,55 @@
+{
+  "data": {
+    "ad_count": 1,
+    "ad_list": [
+      {
+        "data": {
+          "require_feedback_score": 90,
+          "reference_type": "SHORT",
+          "trusted_required": false,
+          "currency": "MXN",
+          "account_info": "",
+          "age_days_coefficient_limit": "4.00",
+          "first_time_limit_btc": "2.00",
+          "city": "Puerto Vallarta",
+          "location_string": "Puerto Vallarta, JAL, Mexico",
+          "countrycode": "MX",
+          "max_amount": null,
+          "lon": -105.22,
+          "sms_verification_required": false,
+          "require_trade_volume": 0.00,
+          "online_provider": "CASH_DEPOSIT",
+          "max_amount_available": null,
+          "msg": "Contact hours: Mon 09:00-17:00",
+          "email": "bob@domain.com",
+          "volume_coefficient_btc": "1.50",
+          "profile": {
+            "username": "Bob",
+            "feedback_score": 100,
+            "trade_count": "0",
+            "last_online": "2014-06-19T16:17:06+00:00",
+            "name": "Bob (30+;100%)"
+          },
+          "bank_name": "Banorte",
+          "trade_type": "ONLINE_SELL",
+          "ad_id": 12345,
+          "temp_price": "8000",
+          "min_amount": "500",
+          "track_max_amount": true,
+          "temp_price_usd": "615",
+          "lat": 20.64,
+          "price_equation": "localbitcoins_sell_usd",
+          "visible": false,
+          "created_at": "2014-06-17T15:15:07+00:00",
+          "atm_model": null
+        },
+        "actions": {
+          "html_form": "https://localbitcoins.com/ads_edit/12345",
+          "public_view": "https://localbitcoins.com/ad/12345",
+          "contact_form": "https://localbitcoins.com/api/contact_create/12345/",
+          "change_form": "https://localbitcoins.com/api/ad/12345/"
+        }
+      }
+    ]
+  }
+}

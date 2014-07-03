@@ -23,3 +23,5 @@ doc/
 
 # Gems
 *.gem
+
+.idea/

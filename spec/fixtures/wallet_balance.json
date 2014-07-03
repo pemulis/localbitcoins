@@ -1,0 +1,16 @@
+{
+  "data": {
+    "message": "ok",
+    "receiving_address_count": 1,
+    "receiving_address_list": [
+      {
+        "address": "15HfUY9LwwewaWwrKRXzE91tjDnHmye1hc",
+        "received": "0.0"
+      }
+    ],
+    "total": {
+      "balance": "0.05",
+      "sendable": "0.05"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+    "data":{
+        "place_count":1,
+        "places":[
+            {
+                "sell_local_url":"https://localbitcoins.com/sell-bitcoins-with-cash/1167206720/hainan-qinghai-china/.json",
+                "location_string":"Hainan, Qinghai, China",
+                "url":"/places/1167206720/hainan-qinghai-china/",
+                "lon":100.62,
+                "lat":36.29,
+                "buy_local_url":"https://localbitcoins.com/buy-bitcoins-with-cash/1167206720/hainan-qinghai-china/.json"
+            }
+        ]
+    }
+}

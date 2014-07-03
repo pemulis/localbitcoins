@@ -1,21 +1,17 @@
 module LocalBitcoins
   module Escrows
     # Get a list of the token owner's releaseable escrows 
-    #
-    def escrows()
-      data = oauth_request(:get, '/api/escrows')
-      Hashie::Mash.new(data)
+    # NOTE: This endpoint is not documented so it may or may not work
+    def escrows
+      oauth_request(:get, '/api/escrows/').data
     end
 
     # Release an escrow
-    #
-    # release_url => the url of the escrow you want to release, 
-    #                probably found by running the `escrows`
-    #                method above
-    #
-    def escrow_release(release_url)
-      data = oauth_request(:post, release_url)
-      data['data']['message']
+    # id - the contact number
+    # NOTE: LocalBitcoins documentation calls this the "escrow_id",
+    # it is actually just the contact number the escrow is associated with
+    def escrow_release(id)
+      oauth_request(:post, "/api/escrow_release/#{id}/").data
     end
   end
 end

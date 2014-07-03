@@ -1,7 +1,6 @@
-# LocalBitcoins API Gem 0.0.4
+# LocalBitcoins API Gem 1.0.0
 
-This gem provides a simple, extensible Ruby wrapper to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/). 
-This repository is a fork of the gem started by [John Shutt](https://github.com/pemulis/localbitcoins).
+This gem provides a simple, extensible Ruby wrapper to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/).
 
 ## Installation & Setup 
 
@@ -374,6 +373,7 @@ Return information about the place at or near a specified latitude and longitude
 # pass a hash of the above fields
 places = client.places(params)
 ```
+
 
 ## License
 

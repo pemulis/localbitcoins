@@ -379,6 +379,7 @@ places = client.places(params)
 * [John Shutt](http://shutt.in)
 * [Will Newman](http://willnewman.me)
 * [Albert Brown](https://www.linkedin.com/pub/albert-brown/36/515/a2)
+* [Coincove](https://coincove.co)
 
 ## License
 

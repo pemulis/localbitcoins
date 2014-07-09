@@ -1,5 +1,5 @@
 module LocalBitcoins
   unless defined?(LocalBitcoins::VERSION)
-    VERSION = '0.0.4'
+    VERSION = '1.0.0'
   end
 end

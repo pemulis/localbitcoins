@@ -374,6 +374,11 @@ Return information about the place at or near a specified latitude and longitude
 places = client.places(params)
 ```
 
+## Contributors
+
+* [John Shutt](http://shutt.in)
+* [Will Newman](http://willnewman.me)
+* [Albert Brown](https://www.linkedin.com/pub/albert-brown/36/515/a2)
 
 ## License
 

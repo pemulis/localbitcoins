@@ -32,15 +32,18 @@ module LocalBitcoins
       signature = OpenSSL::HMAC.hexdigest(digest, @client_secret, data)
       url       = "#{API_URL}#{path}"
 
-      RestClient::Request.execute(
-        method: http_method,
-        url: url,
-        headers: {
-          'Apiauth-Key' => @client_id,
-          'Apiauth-Nonce' => nonce,
-          'Apiauth-Signature' => signature,
-        },
-      )
+      headers = {
+        'Apiauth-Key' => @client_id,
+        'Apiauth-Nonce' => nonce,
+        'Apiauth-Signature' => signature,
+      }
+
+      # TODO(maros): Get the `RestClient::Request.execute` API to work.
+      if http_method == :get
+        RestClient.get(url, headers)
+      else
+        RestClient.post(url, params, headers)
+      end
     end
 
     # Perform an OAuth API request. The client must be initialized

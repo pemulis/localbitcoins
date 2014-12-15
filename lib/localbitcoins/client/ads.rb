@@ -2,7 +2,7 @@ module LocalBitcoins
   module Ads
     # Get a list of the token owner's ads
     def ads
-      oauth_request(:get, '/api/ads/').data
+      request(:get, '/api/ads/').data
     end
 
     # Update one of the token owner's ads
@@ -23,7 +23,7 @@ module LocalBitcoins
           :max_amount => old_ad.max_amount,
           :visible    => old_ad.visible
       }.merge(params)
-      oauth_request(:post, "/api/ad/#{id}/", updated_params).data
+      request(:post, "/api/ad/#{id}/", updated_params).data
     end
 
     # Create a new ad for the token owner
@@ -45,16 +45,16 @@ module LocalBitcoins
     # currency                  - three letter fiat representation [string]
     #
     def create_ad(params={})
-      oauth_request(:post, '/api/ad-create/', params).data
+      request(:post, '/api/ad-create/', params).data
     end
 
     # ads - comma separated list of ad ids [string]
     def ad_list(ads)
-      oauth_request(:get, "/api/ad-get/", {:ads=>ads}).data
+      request(:get, "/api/ad-get/", {:ads=>ads}).data
     end
 
     def ad(ad_id)
-      oauth_request(:get, "/api/ad-get/#{ad_id}/").data.ad_list[0]
+      request(:get, "/api/ad-get/#{ad_id}/").data.ad_list[0]
     end
   end
 end

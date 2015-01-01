@@ -1,6 +1,6 @@
 module LocalBitcoins
   module Escrows
-    # Get a list of the token owner's releaseable escrows 
+    # Get a list of the token owner's releaseable escrows
     # NOTE: This endpoint is not documented so it may or may not work
     def escrows
       request(:get, '/api/escrows/').data

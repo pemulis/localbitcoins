@@ -63,6 +63,8 @@ module LocalBitcoins
         when Net::HTTPNotFound
           raise LocalBitcoins::NotFound
       end
+
+      resp
     end
   end
 end

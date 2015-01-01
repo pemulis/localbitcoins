@@ -84,8 +84,7 @@ describe 'Client' do
       ad = client.ad("12345")
       expect(ad).to be_a Hashie::Mash
       expect(ad.count).to eq 2
-      expect(ad.ad_list[0].data.ad_id).to eq 12345
-      expect(ad.ad_count).to eq 1
+      expect(ad.data.ad_id).to eq 12345
     end
   end
 

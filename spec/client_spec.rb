@@ -5,7 +5,8 @@ describe 'Client' do
   let(:client) { LocalBitcoins::Client.new(
     client_id: 'CLIENT_ID',
     client_secret: 'CLIENT_SECRET',
-    oauth_token: 'ACCESS_TOKEN'
+    oauth_token: 'ACCESS_TOKEN',
+    use_hmac: ENV['USE_HMAC'],
   )}
 
   describe "#escrows" do

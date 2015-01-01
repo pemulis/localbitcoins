@@ -40,7 +40,7 @@ module LocalBitcoins
 
       # TODO(maros): Get the `RestClient::Request.execute` API to work.
       if http_method == :get
-        RestClient.get(url, headers)
+        RestClient.get("#{url}?#{params}", headers)
       else
         RestClient.post(url, params, headers)
       end

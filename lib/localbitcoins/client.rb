@@ -20,7 +20,7 @@ module LocalBitcoins
     include LocalBitcoins::Public
 
 
-    attr_reader :oauth_client, :access_token
+    attr_reader :oauth_client, :access_token, :use_hmac, :client_id, :client_secret
 
     # Initialize a LocalBitcoins::Client instance
     #
@@ -33,18 +33,24 @@ module LocalBitcoins
         raise ArgumentError, "Options hash required."
       end
 
-      @oauth_client = OAuth2::Client.new(
-        options[:client_id],
-        options[:client_secret],
-        authorize_url: "/oauth2/authorize",
-        token_url: "/oauth2/access_token",
-        site: "https://localbitcoins.com"
-      )
+      @use_hmac      = options[:use_hmac]
+      @client_id     = options[:client_id]
+      @client_secret = options[:client_secret]
 
-      @access_token = OAuth2::AccessToken.new(
-        oauth_client,
-        options[:oauth_token]
-      ) 
+      unless @use_hmac
+        @oauth_client = OAuth2::Client.new(
+          @client_id,
+          @client_secret,
+          authorize_url: "/oauth2/authorize",
+          token_url: "/oauth2/access_token",
+          site: "https://localbitcoins.com"
+        )
+
+        @access_token = OAuth2::AccessToken.new(
+          oauth_client,
+          options[:oauth_token]
+        )
+      end
     end
   end
 end

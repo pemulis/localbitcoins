@@ -5,7 +5,8 @@ describe 'Client' do
   let(:client) { LocalBitcoins::Client.new(
     client_id: 'CLIENT_ID',
     client_secret: 'CLIENT_SECRET',
-    oauth_token: 'ACCESS_TOKEN'
+    oauth_token: 'ACCESS_TOKEN',
+    use_hmac: ENV['USE_HMAC'],
   )}
 
   describe "#escrows" do
@@ -84,8 +85,7 @@ describe 'Client' do
       ad = client.ad("12345")
       expect(ad).to be_a Hashie::Mash
       expect(ad.count).to eq 2
-      expect(ad.ad_list[0].data.ad_id).to eq 12345
-      expect(ad.ad_count).to eq 1
+      expect(ad.data.ad_id).to eq 12345
     end
   end
 

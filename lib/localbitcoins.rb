@@ -21,18 +21,19 @@ module LocalBitcoins
     unless options.kind_of?(Hash)
       raise ArgumentError, "Options hash required."
     end
-    
+
     @@options[:client_id]     = options[:client_id]
     @@options[:client_secret] = options[:client_secret]
+    @@options[:use_hmac]      = options[:use_hmac]
     @@options
   end
-  
+
   # Returns global configuration hash
   #
   def self.configuration
     @@options
   end
-  
+
   # Resets the global configuration
   #
   def self.reset_configuration

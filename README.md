@@ -1,4 +1,4 @@
-# LocalBitcoins API Gem 1.0.0
+# LocalBitcoins API Gem 1.1.0
 
 This gem provides a simple, extensible Ruby wrapper to access the [LocalBitcoins API](https://localbitcoins.com/api-docs/).
 
@@ -16,7 +16,10 @@ gem 'localbitcoins'
 
 You can use the gem with or without OAuth2 for authentication. Without authentication the API only allows access to the public endpoints documented [here (Ad Listings)](https://localbitcoins.com/api-docs/public/) and [here (Market Data)](https://localbitcoins.com/api-docs/#toc7)
 
+
 ### Setting Up The Client 
+
+**TODO: Document HMAC requests.**
 
 For authenticated requests to the LocalBitcoins API, you must [register your application](https://localbitcoins.com/accounts/api/) and get your API credentials. Use the Client ID and Client Secret to receive an access token via OAuth2. There are a number of ways to implement OAuth2, and it is largely left up to you to decide how to do it. If you've never used OAuth2 before, reading [this tutorial](http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified) is a good place to start!
 
@@ -380,6 +383,7 @@ places = client.places(params)
 * [Will Newman](http://willnewman.me)
 * [Albert Brown](https://www.linkedin.com/pub/albert-brown/36/515/a2)
 * [Coincove](https://coincove.co)
+* [Maros Hluska](http://mhluska.com)
 
 ## License
 

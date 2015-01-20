@@ -6,9 +6,8 @@ Gem::Specification.new do |s|
   s.summary     = "LocalBitcoins API wrapper"
   s.description = "Ruby wrapper for the LocalBitcoins API"
   s.homepage    = "http://github.com/pemulis/localbitcoins"
-  s.authors     = ["John Shutt", "Will Newman", "Albert Brown"]
-  s.email       = ["john.d.shutt@gmail.com","will.newman@rutgers.edu", "albert_brown@brown.edu"]
-  s.homepage    = "http://shutt.in"
+  s.authors     = ["John Shutt", "Will Newman", "Albert Brown", "Maros Hluska"]
+  s.email       = ["john.d.shutt@gmail.com","will.newman@rutgers.edu", "albert_brown@brown.edu", "me@mhluska.com"]
   s.license     = "MIT"
   
   s.add_development_dependency 'rspec',     '~> 2.13'
@@ -19,6 +18,9 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'hashie',        '~> 2.0.2'
   s.add_runtime_dependency 'activesupport', '~> 3'
   s.add_runtime_dependency 'oauth2',        '~> 0.9.4'
+  s.add_runtime_dependency 'openssl'
+  s.add_runtime_dependency 'date'
+  s.add_runtime_dependency 'uri'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
